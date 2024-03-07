@@ -4,7 +4,7 @@ export const HeaderBlock = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 24px 140px 66px 140px;
+  margin: 24px 0 66px 0;
 `
 export const UserNameBlock = styled.div`
   display: flex;
