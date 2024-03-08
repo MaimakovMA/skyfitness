@@ -1,11 +1,15 @@
 import { styled } from 'styled-components';
 
+export const Conteiner = styled.div`
+    background-color: rgb(39, 26, 88);
+`
+
 export const TitelNotfound = styled.div`
-    
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 250px;
+    height: 100vh;
+    padding-top: 250px;
 `
 
 export const TitelNotfoundErrorText = styled.h1`
@@ -15,6 +19,7 @@ export const TitelNotfoundErrorText = styled.h1`
     font-weight: 400;
     line-height: 168px;
     margin: 0px;
+    color: #FFFFFF;
 `
 
 export const TitelNotfoundErrorInformation = styled.h2`
@@ -25,6 +30,7 @@ export const TitelNotfoundErrorInformation = styled.h2`
     line-height: 40px;
     display: flex;
     margin: 0px;
+    color: #FFFFFF;
 `
 
 export const TitelNotfoundInfo = styled.h3`
@@ -37,6 +43,7 @@ export const TitelNotfoundInfo = styled.h3`
     font-weight: 400;
     line-height: 24px;
     letter-spacing: -0.054px;
+    color: #FFFFFF;
 `
 
 export const NotfoundButton = styled.button`
