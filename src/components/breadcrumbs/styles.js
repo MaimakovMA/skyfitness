@@ -12,5 +12,5 @@ export const BreadCrumbsList = styled.ul`
   list-style: none;
   margin: 0 0 20px;
   padding: 0;
-
+  gap: 8px;
 `
