@@ -10,7 +10,7 @@ export const BreadCrumbsList = styled.ul`
   text-align: left;
   display: flex;
   list-style: none;
-  margin: 0 0 20px;
+  margin: 0 0 40px;
   padding: 0;
   gap: 8px;
 `

@@ -17,4 +17,5 @@ background: rgb(88, 14, 162);
 border: 0;
 text-align: center;
 margin-top: 40px;
+cursor: pointer;
 `

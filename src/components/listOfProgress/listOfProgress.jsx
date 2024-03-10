@@ -10,11 +10,11 @@ export default function ListOfProgress() {
       </S.Item>
       <S.Item>
         <span>Наклоны назад</span>
-        <ProgressBar percentage={45} color={'#FF6D00'}/>
+        <ProgressBar percentage={30} color={'#FF6D00'}/>
       </S.Item>
       <S.Item>
         <span>Поднятие ног, <br/> согнутых в коленях</span>
-        <ProgressBar percentage={45} color={'#9A48F1'}/>
+        <ProgressBar percentage={90} color={'#9A48F1'}/>
       </S.Item>
     </S.List>
   )

@@ -3,7 +3,7 @@ import ListOfExercises from '../../components/listOfExercises/listOfExercises'
 import ListTitle from '../../components/listTitle/listTitle'
 import ProgressButton from '../progressButton/progressButton'
 
-export default function ListOfExercisesContainer() {
+export default function ListOfExercisesContainer({setModalActive}) {
   return (
     <S.Container>
       <ListTitle text="Упражнения" />
@@ -14,7 +14,7 @@ export default function ListOfExercisesContainer() {
           'Поднятие ног, согнутых в коленях (5 повторений)',
         ]}
       />
-      <ProgressButton/>
+      <ProgressButton setModalActive={setModalActive}/>
     </S.Container>
   )
 }
