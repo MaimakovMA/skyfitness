@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-// import SidebarLogin from '../SidebarUser/SidebarPersonal'
+import SidebarLogin from '../SidebarUser/SidebarPersonal'
 import * as S from './Header.styles'
 
 function HeaderProfile() {

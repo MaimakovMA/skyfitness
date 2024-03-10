@@ -2,14 +2,14 @@
 import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import * as S from './MyProfile.styles'
-// import { setEmail } from '../../Store/Slice/Slice'
+import { setEmail } from '../../Store/Slice/Slice'
 import CorrectLogin from '../../pages/CorrectLogin/CorrectLogin'
 import CorrectPassword from '../../pages/CorrectPassword/Correct'
 
 function MyProfile() {
   const dispatch = useDispatch()
   const userName = localStorage.getItem('userEmail')
-  const auth = getAuth()
+  // const auth = getAuth()
   const [visibleLogin, setVisibleLogin] = useState(false)
   const [visiblePas, setVisiblePas] = useState(false)
   const [newEmail, setNewEmail] = useState('')

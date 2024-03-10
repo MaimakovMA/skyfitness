@@ -1,5 +1,5 @@
-import { Routes, Route } from 'react-router-dom'
-import Profile from './pages/profile'
+import { Routes, Route, Navigate } from 'react-router-dom'
+import Profile from './pages/profile/index'
 
 // import Acquaint from './pages/acquaint/acquaint'
 // import AuthPage from './pages/Authpage/AuthPage'
@@ -11,7 +11,7 @@ export default function AppRoutes() {
   return (
     
     <Routes>
-      
+     <Route path="/" element={<Navigate replace to="/profile" />} /> 
       <Route path="/profile" element={<Profile />} />
       
     </Routes>
