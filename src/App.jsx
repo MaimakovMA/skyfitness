@@ -1,17 +1,13 @@
 import * as S from './App.styles.js';
-import { ChooseCourse } from './pages/chooseCourse.jsx'
+import { AppRoutes } from "./routes";
 
+export const App = () => {
 
-
-function App() {
   return (
-    <S.Wrapper> 
+    <S.Wrapper>
       <S.Container>
-        <ChooseCourse />
+        <AppRoutes />
       </S.Container>
     </S.Wrapper>
-
   );
-}
-
-export default App;
+};
