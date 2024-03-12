@@ -4,8 +4,7 @@ export const Heading = () => {
     return (
         <>
           <S.LogoBlock>
-            <S.Logo src="/img/logo.svg" alt="logo" />
-            <S.LinkPersonalAccount to={`/profile`}>Личный кабинет</S.LinkPersonalAccount>
+            <S.Logo src="/img/logoWhite.svg" alt="logoWhite" />
             <S.LogoButton to={`/login`}>Войти</S.LogoButton>
           </S.LogoBlock>
           <S.Heading>Онлайн-тренировки для занятий дома</S.Heading> 
