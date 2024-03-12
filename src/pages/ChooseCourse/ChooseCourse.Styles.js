@@ -1,10 +1,11 @@
 import { styled } from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const Conteiner = styled.div` 
     padding-right: 140px;
     padding-left: 140px;
 `
-
+export const LogoBox = styled(Link)``
 
 export const LogoChoose = styled.img`
     padding-top: 30px;

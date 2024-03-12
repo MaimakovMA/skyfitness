@@ -6,7 +6,7 @@ export const App = () => {
   return (
     <S.Wrapper>
       <S.Container>
-        <AppRoutes />
+          <AppRoutes />
       </S.Container>
     </S.Wrapper>
   );
