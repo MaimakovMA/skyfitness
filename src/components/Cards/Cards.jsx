@@ -3,7 +3,7 @@ import * as S from './Cards.js';
 export const Cards =() => {
     return (
         <S.MainBlockCards>
-            <S.BlockCard>
+            <S.BlockCard to={`/selectworkout/:id`}>
                 <S.Card  src="/img/yoga.png" alt="yoga" />
             </S.BlockCard>
             <S.BlockCard>

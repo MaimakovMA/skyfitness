@@ -13,6 +13,32 @@ export const Logo = styled.img`
     width: 236px;
 `
 
+export const LinkPersonalAccount = styled(Link)`
+    position: relative;
+    left: 348px;
+    border-radius: 46px;
+    background: rgb(20, 13, 64);
+    height: 36px;
+    width: 132px;
+    margin-top: 26px;
+    color: rgb(255, 255, 255);
+    font-family: StratosSkyeng;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: center;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+     &:hover {
+        background: rgb(45, 31, 121);
+    }
+    &:active {
+        background: rgb(59, 41, 162);
+    }
+`
+
 export const LogoButton = styled(Link)`
     border-radius: 46px;
     background: rgb(20, 13, 64);

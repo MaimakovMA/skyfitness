@@ -1,9 +1,11 @@
-import * as S from './ChooseCourse.Styles.js'
+import * as S from './ChooseCourse.Styles.js';
 
 export const ChooseCourse = () => {
     return(
         <S.Conteiner>
+            <S.LogoBox to="/">
             <S.LogoChoose src="/img/logo.png" alt="logo" />
+            </S.LogoBox>
             <S.BlockYoga>
                 <S.BlockYogaCard src="/img/CardYoga.png" alt="CardYoga">
                 </S.BlockYogaCard>
