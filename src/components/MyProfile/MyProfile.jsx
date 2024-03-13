@@ -5,6 +5,7 @@ import CorrectLogin from '../../pages/CorrectLogin/CorrectLogin'
 import CorrectPassword from '../../pages/CorrectPassword/Correct'
 import * as S from './MyProfile.styles'
 import { getAuth, updateEmail, updatePassword } from 'firebase/auth'
+import { useDispatch } from 'react-redux'
 
 function MyProfile() {
     const dispatch = useDispatch()
