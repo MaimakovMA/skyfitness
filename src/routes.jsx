@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route} from "react-router-dom";
 import { Login } from './pages/SignIn/SignIn.jsx';
 import { SignUp } from './pages/signUp/SignUp.jsx';
 import { ListOfCourses } from './pages/ListOfCourses/ListOfCourses.jsx';
@@ -11,7 +11,7 @@ export const AppRoutes = () => {
     <Routes>
         <Route path='/' element={<ListOfCourses />}></Route>
         
-        {/* <Route path='/' element={< Navigate replace to="/profile"/>}></Route> */}
+      
 
         <Route path="/profile" element={<Profile />} />
         <Route path="/login" element={<Login />}></Route>
