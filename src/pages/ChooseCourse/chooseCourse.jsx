@@ -1,10 +1,14 @@
 import * as S from './ChooseCourse.Styles.js';
+import { getAllCourses } from 'api.jsx'
 
 export const ChooseCourse = () => {
+
+    console.log(getAllCourses())
+
     return(
         <S.Conteiner>
             <S.LogoBox to="/">
-            <S.LogoChoose src="/img/logo.png" alt="logo" />
+            <S.LogoChoose src="/img/logo.svg" alt="logo" />
             </S.LogoBox>
             <S.BlockYoga>
                 <S.BlockYogaCard src="/img/CardYoga.png" alt="CardYoga">
@@ -24,8 +28,7 @@ export const ChooseCourse = () => {
                             <path id="1" d="M34.3035 22.2266L37.1238 22.2266L37.1238 45.5L34.3035 45.5L34.3035 25.1797L34.1629 25.1797L28.4832 28.9531L28.4832 26.0938L34.3035 22.2266Z" fill="#000000" fillOpacity="1.000000" fillRule="evenodd"/>
                         </svg>
                         </S.BlockChoiceSvg>
-                        <S.BlockChoiceTitle>Давно хотели попробовать йогу, но не решались начать.
-                        </S.BlockChoiceTitle>
+                        <S.BlockChoiceTitle>Давно хотели попробовать йогу, но не решались начать</S.BlockChoiceTitle>
                     </S.BlockChoice1>
                     <S.BlockChoice1>
                         <S.BlockChoiceSvg>
@@ -55,8 +58,8 @@ export const ChooseCourse = () => {
                         </S.BlockChoiceSvg>
                         <S.BlockChoiceTitle>Ищете активность, полезную для тела и души.                            
                         </S.BlockChoiceTitle>
-                    </S.BlockChoice1>
-                </S.BlockChoice>                
+                    </S.BlockChoice1>          
+                </S.BlockChoice>   
             </S.BlockForYou>
             <S.Directions>
                 <S.DirectionsTitle>

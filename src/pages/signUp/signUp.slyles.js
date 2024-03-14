@@ -25,7 +25,7 @@ export const ModalBlock = styled.div`
 
 export const ModalFormLogin = styled.form`
     width: 366px;
-    height: 439px;
+    height: 510px;
     background-color: #FFFFFF;
     border-radius: 12px;
     display: -webkit-box;
@@ -199,6 +199,54 @@ export const ModalButtonLink = styled(Link)`
         text-decoration: none;
         font-family: 'StratosSkyeng', sans-serif;
         cursor: pointer;
+    }
+`
+
+export const ModalBtnSignUp = styled.button`
+    width: 278px;
+    height: 52px;
+    background-color: transparent;
+    border: 1px solid #d0cece;
+    border-radius: 6px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: -0.05px;
+    color: #000000;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    & a {
+      width: 100%;
+      height: 100%;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 24px;
+      letter-spacing: -0.05px;
+      color: #000000;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+    }
+    &:hover {
+      background-color: #f4f5f6;
+    }
+    &:active {
+      background-color: #d9d9d9;
     }
 `
 

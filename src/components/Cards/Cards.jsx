@@ -1,7 +1,27 @@
 import * as S from './Cards.js';
+import { useAuth } from 'hooks/use-auth';
 
 export const Cards =() => {
-    return (
+
+    const { isAuth } = useAuth()
+
+    return isAuth ? (<S.MainBlockCards>
+        <S.BlockCard  >
+            <S.Card  src="/img/yoga.png" alt="yoga" />
+        </S.BlockCard>
+        <S.BlockCard>
+            <S.Card src="/img/Stretching.png" alt="Stretching" />
+        </S.BlockCard>
+        <S.BlockCard>
+            <S.Card src="/img/card3.png" alt="card3" />
+        </S.BlockCard>
+        <S.BlockCard>
+            <S.Card src="/img/card4.png" alt="card4" />
+        </S.BlockCard>
+        <S.BlockCard>
+            <S.Card src="/img/card5.png" alt="card5" />
+        </S.BlockCard>
+      </S.MainBlockCards>) :(
         <S.MainBlockCards>
             <S.BlockCard to={`/selectworkout/:id`}>
                 <S.Card  src="/img/yoga.png" alt="yoga" />
