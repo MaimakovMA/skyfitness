@@ -12,7 +12,7 @@ export async function getAllCourses() {
   
     return newData;
   }
-  
+
   //Запрос на все тренировки
   export async function getAllWorkouts() {
     const response = await fetch(BASE_URL + "/workouts.json", {

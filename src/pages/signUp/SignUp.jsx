@@ -29,9 +29,9 @@ export const SignUp = () => {
           id: user.uid,
           token: user.accessToken,
       }));
-      navigate('/');
+      navigate('/login');
   })
-  .catch(console.error)
+  .catch(() => alert ('Неправильное имя пользователя или пароль!'))
   };
 
     return(
@@ -42,7 +42,7 @@ export const SignUp = () => {
             <S.ModalFormLogin action="#">
             <S.ModalButtonLink to="/">
                 <S.ModalLogo>
-                  <img src="/img/logoBlack.svg" alt="logoBlack" />
+                  <img src="/img/logo.svg" alt="logo" />
                 </S.ModalLogo>
             </S.ModalButtonLink>
               <S.ModalInput
@@ -66,6 +66,9 @@ export const SignUp = () => {
                 value={confirmPassword}
                 onChange={(event) => setConfirmPassword(event.target.value)}
                             />
+              <S.ModalBtnSignUp>
+              <S.ModalButtonLink to="/login">Войти</S.ModalButtonLink>
+              </S.ModalBtnSignUp>
               <S.ModalBtnEnter >
               <S.ModalButtonLink onClick={(event) => hendleRegister(event)}>Зарегистрироваться</S.ModalButtonLink>
               </S.ModalBtnEnter>
