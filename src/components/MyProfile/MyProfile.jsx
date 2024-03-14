@@ -4,18 +4,22 @@ import { useEffect, useState } from 'react'
 import CorrectLogin from '../../pages/CorrectLogin/CorrectLogin'
 import CorrectPassword from '../../pages/CorrectPassword/Correct'
 import * as S from './MyProfile.styles'
-import { getAuth } from "firebase/auth";
+import { getAuth, updateEmail, updatePassword } from 'firebase/auth'
+import { useDispatch } from 'react-redux'
 
 function MyProfile() {
-    // const dispatch = useDispatch()
+    const dispatch = useDispatch()
     const userName = localStorage.getItem('userEmail')
-     const auth = getAuth()
+    const auth = getAuth()
     const [visibleLogin, setVisibleLogin] = useState(false)
     const [visiblePas, setVisiblePas] = useState(false)
     const [newEmail, setNewEmail] = useState('')
     const [newPassword, setNewPassword] = useState('')
     const [isEditing, setIsEditing] = useState(false)
   
+
+
+    
     const handleEscape = (event) => {
       if (event.key === 'Escape') {
         if (isEditing) {
