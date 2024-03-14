@@ -3,18 +3,27 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setUser } from 'store/slices/userSlice.js';
+import { useNavigate } from 'react-router-dom';
 
 export const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
+  const navigate = useNavigate()
 
   const hendleLogin = (event) => {
     event.preventDefault()
     const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
-    .then(console.log)
-    .catch(console.error)
+    .then(({user}) => {
+      dispatch(setUser({
+          email: user.email,
+          id: user.uid,
+          token: user.accessToken,
+      }));
+      navigate('/');
+  })
+    .catch(() => alert ('Неправильное имя пользователя или пароль!'))
   };
   
     return(
@@ -25,7 +34,7 @@ export const Login = () => {
             <S.ModalFormLogin action="#">
             <S.ModalButtonLink to="/">
                 <S.ModalLogo>
-                  <img src="/img/logoBlack.svg" alt="logoBlack" />
+                  <img src="/img/logo.svg" alt="logo" />
                 </S.ModalLogo>
             </S.ModalButtonLink>
               <S.ModalInputLogin
