@@ -14,7 +14,7 @@ export const Heading = () => {
             <S.Logo src="/img/logoWhite.svg" alt="logoWhite" />
             {isAuth ? (
             <>
-            <S.LinkPersonalAccount to={`/profile`}>Личный кабинет</S.LinkPersonalAccount >
+            <S.LinkPersonalAccount to={`/profile`}>Мой профиль</S.LinkPersonalAccount >
             <S.LogoButton onClick={()=> dispatch(removeUser())}>Выйти</S.LogoButton>
             </>
             ) : (
