@@ -56,7 +56,7 @@ export default function CorrectLogin({ onClick, setNew }) {
       <GlobalStyle />
       <S.ModalForm>
         <S.ModalLogo>
-          <S.ModalLogoImage src="../../img/logo.png" alt="logo" />
+          <S.ModalLogoImage src="" alt="logo" />
         </S.ModalLogo>
 
         <S.LoginName>Новый логин:</S.LoginName>

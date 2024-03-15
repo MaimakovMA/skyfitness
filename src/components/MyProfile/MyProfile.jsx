@@ -6,11 +6,15 @@ import CorrectPassword from '../../pages/CorrectPassword/Correct'
 import * as S from './MyProfile.styles'
 import { getAuth, updateEmail, updatePassword } from 'firebase/auth'
 import { useDispatch } from 'react-redux'
+import { setEmail } from 'store/slices/userSlice'
+import { useAuth } from 'hooks/use-auth'
 
 function MyProfile() {
     const dispatch = useDispatch()
-    const userName = localStorage.getItem('userEmail')
+    // const userName = localStorage.getItem('userEmail')
     const auth = getAuth()
+    const { email } = useAuth()
+    const { password } = useAuth()
     const [visibleLogin, setVisibleLogin] = useState(false)
     const [visiblePas, setVisiblePas] = useState(false)
     const [newEmail, setNewEmail] = useState('')
@@ -46,7 +50,7 @@ function MyProfile() {
           localStorage.setItem('userEmail', newEmail)
           dispatch(setEmail({ email: newEmail }))
         })
-        .catch(() => {
+        .catch((error) => {
           alert('Некорректный логин')
         })
     }
@@ -69,8 +73,8 @@ return (
 
     <S.HeaderStyleMyProfile>
     <S.NamePages>Мой профиль</S.NamePages>
-    <S.LoginPassName>Логин: {userName}</S.LoginPassName>
-    <S.LoginPassNameWithPadding>Пароль: ********</S.LoginPassNameWithPadding>
+    <S.LoginPassName>Логин: {email} </S.LoginPassName>
+    <S.LoginPassNameWithPadding>Пароль: {password} </S.LoginPassNameWithPadding>
 
     {visibleLogin ? (
       <CorrectLogin onClick={handleLogin} setNew={setNewEmail} />

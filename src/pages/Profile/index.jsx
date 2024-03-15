@@ -12,7 +12,9 @@ export default function Profile() {
         <S.LogoBox to="/">
             <S.LogoChoose src="/img/logo.svg" alt="logo" />
             </S.LogoBox>
+            <S.LogoUser src="/img/profileImg.png" alt="logoUser"></S.LogoUser>
         <S.User>{email}</S.User>
+        
         {/* <Header /> */}
         <MyProfile />
         <MyCourseInProfile />
