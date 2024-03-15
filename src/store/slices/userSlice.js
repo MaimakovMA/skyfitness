@@ -21,10 +21,9 @@ const userSlice = createSlice ({
             state.token = null;
             state.id = null;
         },
-        setEmail: (state, { payload }) => ({
-            ...state,
-            email: payload.email,
-          }),
+        setEmail: (state, action) => {
+            state.email = action.payload.email;
+          },
     },
 });
 

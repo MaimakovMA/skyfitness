@@ -14,7 +14,7 @@ function MyProfile() {
     // const userName = localStorage.getItem('userEmail')
     const auth = getAuth()
     const { email } = useAuth()
-    const { password } = useAuth()
+    
     const [visibleLogin, setVisibleLogin] = useState(false)
     const [visiblePas, setVisiblePas] = useState(false)
     const [newEmail, setNewEmail] = useState('')
@@ -47,13 +47,29 @@ function MyProfile() {
       const user = auth.currentUser
       updateEmail(user, newEmail)
         .then(() => {
-          localStorage.setItem('userEmail', newEmail)
-          dispatch(setEmail({ email: newEmail }))
+          // localStorage.setItem('email', newEmail)
+          dispatch(setEmail({ email: newEmail })
+          );
+          // alert('Email успешно обновлен');
+      // setVisibleLogin(false); // Закрываем форму после успешного обновления
+      // setIsEditing(false);
         })
         .catch((error) => {
-          alert('Некорректный логин')
+          alert('Ошибка при обновлении email:', error.message)
         })
     }
+
+    // const hendleLogin = (event) => {
+    //   event.preventDefault()
+    //   const auth = getAuth();
+    //   signInWithEmailAndPassword(auth, email, password)
+    //   .then(({user}) => {
+    //     dispatch(setUser({
+    //         email: user.email,
+    //         id: user.uid,
+    //         token: user.accessToken,
+    //     }));
+    //     navigate('/');
   
     const handlePassword = () => {
       setIsEditing(true)
@@ -74,7 +90,7 @@ return (
     <S.HeaderStyleMyProfile>
     <S.NamePages>Мой профиль</S.NamePages>
     <S.LoginPassName>Логин: {email} </S.LoginPassName>
-    <S.LoginPassNameWithPadding>Пароль: {password} </S.LoginPassNameWithPadding>
+    <S.LoginPassNameWithPadding>Пароль: ***** </S.LoginPassNameWithPadding>
 
     {visibleLogin ? (
       <CorrectLogin onClick={handleLogin} setNew={setNewEmail} />
