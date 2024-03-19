@@ -3,7 +3,6 @@ import * as S from './styles.js'
 export default function ModalQuestionnaire({setModalActive}) {
 
   const sendForm = () => {
-    console.log('send');
     setModalActive(2)
     setTimeout(() => setModalActive(0), 2000)
   }

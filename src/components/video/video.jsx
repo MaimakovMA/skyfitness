@@ -1,4 +1,4 @@
-export default function Video() {
+export default function Video({url}) {
   const opts = {
     height: '639px',
     width: '100%',
@@ -7,7 +7,7 @@ export default function Video() {
       <iframe
         width="100%"
         height="720px"
-        src="https://www.youtube.com/embed/v-xTLFDhoD0?si=icUKIeOYZzTBTIbW" 
+        src={url} 
         title="YouTube video player"
         frameBorder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
