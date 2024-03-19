@@ -1,7 +1,8 @@
 import * as S from './profile.styled'
-import MyProfile from '../../components/MyProfile/MyProfile'
+// import MyProfile from '../../components/MyProfile/MyProfile'
 import MyCourseInProfile from '../../components/MyCourseInProfile/MyCourseInProfile'
 import { useAuth } from 'hooks/use-auth';
+import { PersonalPage } from 'pages/personal/personalPage';
 
 export default function Profile() {
    
@@ -16,7 +17,7 @@ export default function Profile() {
         <S.User>{email}</S.User>
         
         {/* <Header /> */}
-        <MyProfile />
+        <PersonalPage />
         <MyCourseInProfile />
       </S.StyledSection>
     )

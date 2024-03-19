@@ -21,9 +21,18 @@ const coursesSlice = createSlice({
       console.log(action.payload);
       state.currentWorkout = action.payload;
     },
+    setCurrentCourse: (state, action) => {
+      state.currentCourse = action.payload;
+    },
+    setWorkoutList: (state, action) => {
+      state.workoutList = Object.keys(action.payload).map((key) => ({
+        id: key,
+        ...action.payload[key]
+      }));
+    },
   },
 });
 
-export const { setAllCourses, setAllWorkouts, setUsersCourses, setCurrentWorkout } = coursesSlice.actions;
+export const { setAllCourses, setAllWorkouts, setUsersCourses, setCurrentWorkout, setCurrentCourse, setWorkoutList } = coursesSlice.actions;
 
 export default coursesSlice.reducer;

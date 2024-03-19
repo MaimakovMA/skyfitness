@@ -3,18 +3,19 @@ import {useDispatch} from 'react-redux'
 import { useAuth } from 'hooks/use-auth';
 import {removeUser} from 'store/slices/userSlice';
 
+
 export const Heading = () => {
   const dispatch = useDispatch();
 
   const { isAuth } = useAuth()
-
+ 
     return (
         <>
           <S.LogoBlock>
             <S.Logo src="/img/logoWhite.svg" alt="logoWhite" />
             {isAuth ? (
             <>
-            <S.LinkPersonalAccount to={`/profile`}>Мой профиль</S.LinkPersonalAccount >
+            <S.LinkPersonalAccount to={`/PersonalPage`}>Мой профиль</S.LinkPersonalAccount >
             <S.LogoButton onClick={()=> dispatch(removeUser())}>Выйти</S.LogoButton>
             </>
             ) : (
