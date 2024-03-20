@@ -1,43 +1,36 @@
 import * as S from './Cards.js';
 import { useAuth } from 'hooks/use-auth';
+import { useSelector } from "react-redux";
+import React, { useState } from "react";
+//import { images } from "../images/images.jsx";
 
 export const Cards =() => {
 
     const { isAuth } = useAuth()
+    const { coursesList } = useSelector(({ courses }) => courses);
+    const [currentPage] = useState(0);
+    const itemsPerPage = 6;
+    const offset = currentPage * itemsPerPage;
+    const paginatedData = coursesList.slice(offset, offset + itemsPerPage);
 
-    return isAuth ? (<S.MainBlockCards>
-        <S.BlockCard  >
-            <S.Card  src="/img/yoga.png" alt="yoga" />
+    return isAuth ? (
+    <S.MainBlockCards>
+      { paginatedData ?.sort((a, b) => a.order - b.order).map(({ id , name, image }) => { return(  
+        <S.BlockCard  key={id}>   
+          <S.Card   style={{ backgroundImage: `url(${image})`}}>
+            <S.CourseName >{name}</S.CourseName>
+          </S.Card>
         </S.BlockCard>
-        <S.BlockCard>
-            <S.Card src="/img/Stretching.png" alt="Stretching" />
+        )})}
+    </S.MainBlockCards>) : (
+    <S.MainBlockCards>
+      { paginatedData ?.sort((a, b) => a.order - b.order).map(({ id , name, image }) => { return(  
+        <S.BlockCard to={`/selectworkout/${id}`} key={id}>        
+          <S.Card style={{ backgroundImage: `url(${image})`}} >
+            <S.CourseName >{name}</S.CourseName>
+          </S.Card>
         </S.BlockCard>
-        <S.BlockCard>
-            <S.Card src="/img/card3.png" alt="card3" />
-        </S.BlockCard>
-        <S.BlockCard>
-            <S.Card src="/img/card4.png" alt="card4" />
-        </S.BlockCard>
-        <S.BlockCard>
-            <S.Card src="/img/card5.png" alt="card5" />
-        </S.BlockCard>
-      </S.MainBlockCards>) :(
-        <S.MainBlockCards>
-            <S.BlockCard to={`/selectworkout/:id`}>
-                <S.Card  src="/img/yoga.png" alt="yoga" />
-            </S.BlockCard>
-            <S.BlockCard>
-                <S.Card src="/img/Stretching.png" alt="Stretching" />
-            </S.BlockCard>
-            <S.BlockCard>
-                <S.Card src="/img/card3.png" alt="card3" />
-            </S.BlockCard>
-            <S.BlockCard>
-                <S.Card src="/img/card4.png" alt="card4" />
-            </S.BlockCard>
-            <S.BlockCard>
-                <S.Card src="/img/card5.png" alt="card5" />
-            </S.BlockCard>
-          </S.MainBlockCards>
+            )})}
+    </S.MainBlockCards>
     )
 }

@@ -1,9 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
+//import { useNavigate } from "react-router-dom";
+
+//const navigate = useNavigate();
 
 const initialState = {
     email: null,
     token: null,
     id: null,
+    currentUser: [],
+    course: [],
 };
 
 const userSlice = createSlice ({
@@ -20,6 +25,15 @@ const userSlice = createSlice ({
             state.token = null;
             state.id = null;
         },
+        /*addItemToCourse: (state, action) => {
+           let newCourse = [...state.course ];
+           const found = state.course.find(({id}) => id === playload.id)
+           if(found) {
+            newCourse = newCourse.map((item) => {
+              return item.id === playload.id ?  (navigate('/profile')) : item;
+           }); 
+           } else  newCourse.push({pleyload, quantity: 1})
+        },*/
     },
 });
 

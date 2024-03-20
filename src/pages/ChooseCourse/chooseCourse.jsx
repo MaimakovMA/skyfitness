@@ -1,19 +1,42 @@
+import { useEffect } from 'react';
 import * as S from './ChooseCourse.Styles.js';
-import { getAllCourses } from 'api.jsx'
+import { useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
+import { useGetCorsesQuery } from 'store/slices/apiSlice.js';
+import React, { Fragment } from "react"
 
 export const ChooseCourse = () => {
 
-    console.log(getAllCourses())
+    const { id } = useParams();
+    const navigate = useNavigate()
+    
+    const { data, isLoading, isFetching, isSuccess } = useGetCorsesQuery({ id });
+    var data1 = Object.entries(data).map((data) => {})
+    console.log( data)
+    /*useEffect(() => {
+      if( !isLoading && !isFetching && isSuccess) {
+        navigate('/')
+      }
+    }, [isLoading, isFetching, isSuccess])*/
 
-    return(
+    const { coursesList } = useSelector(({ courses }) => courses);
+
+    return (
         <S.Conteiner>
+            
             <S.LogoBox to="/">
             <S.LogoChoose src="/img/logo.svg" alt="logo" />
             </S.LogoBox>
-            <S.BlockYoga>
-                <S.BlockYogaCard src="/img/CardYoga.png" alt="CardYoga">
+            {coursesList.map(({  id, name , image }) => { return(
+                <Fragment key={id}>
+               
+            <S.BlockYoga >
+                <S.BlockYogaCard style={{ backgroundImage: `url(${image})`}} >
+                <S.CourseName >{name}</S.CourseName>
                 </S.BlockYogaCard>
             </S.BlockYoga>
+                </Fragment>
+            )})}
             <S.BlockForYou>
                 <S.TitleForYou>Подойдет для вас, если:</S.TitleForYou>
                 <S.BlockChoice>
@@ -27,11 +50,6 @@ export const ChooseCourse = () => {
                             <rect id="Frame 56953" rx="33.500000" width="67.000000" height="67.000000" fill="#C7E957" fillOpacity="1.000000"/>
                             <path id="1" d="M34.3035 22.2266L37.1238 22.2266L37.1238 45.5L34.3035 45.5L34.3035 25.1797L34.1629 25.1797L28.4832 28.9531L28.4832 26.0938L34.3035 22.2266Z" fill="#000000" fillOpacity="1.000000" fillRule="evenodd"/>
                         </svg>
-                        </S.BlockChoiceSvg>
-                        <S.BlockChoiceTitle>Давно хотели попробовать йогу, но не решались начать</S.BlockChoiceTitle>
-                    </S.BlockChoice1>
-                    <S.BlockChoice1>
-                        <S.BlockChoiceSvg>
                         <svg width="67.000000" height="67.000000" viewBox="0 0 67 67" fill="none" xmlns="http://www.w3.org/2000/svg" >
                             <desc>
                                     Created with Pixso.
@@ -40,13 +58,6 @@ export const ChooseCourse = () => {
                             <rect id="Frame 56953" rx="33.500000" width="67.000000" height="67.000000" fill="#C7E957" fillOpacity="1.000000"/>
                             <path id="2" d="M41.3738 45.5L26.6863 45.5L26.6863 43.4531L34.3738 35.0469C37.0613 32.1016 38.327 30.5078 38.327 28.3672C38.327 25.9063 36.3973 24.3672 33.8738 24.3672C31.1785 24.3672 29.4598 26.125 29.4598 28.7735L26.7801 28.7735C26.7801 24.6797 29.8817 21.9063 33.9598 21.9063C38.0535 21.9063 40.9598 24.7735 40.9598 28.3672C40.9598 30.9453 39.7801 32.9453 35.7801 37.2266L30.5535 42.8203L30.5535 43L41.3738 43L41.3738 45.5Z" fill="#000000" fillOpacity="1.000000" fillRule="evenodd"/>
                         </svg>
-                            
-                        </S.BlockChoiceSvg>
-                        <S.BlockChoiceTitle>Хотите укрепить позвоночник, избавиться от болей в спине и суставах.                            
-                        </S.BlockChoiceTitle>
-                    </S.BlockChoice1>
-                    <S.BlockChoice1>
-                        <S.BlockChoiceSvg>
                         <svg width="67.000000" height="67.000000" viewBox="0 0 67 67" fill="none" xmlns="http://www.w3.org/2000/svg" >
                             <desc>
                                     Created with Pixso.
@@ -54,11 +65,12 @@ export const ChooseCourse = () => {
                             <defs/>
                             <rect id="Frame 56953" rx="33.500000" width="67.000000" height="67.000000" fill="#C7E957" fillOpacity="1.000000"/>
                             <path id="3" d="M41.9129 39.1797C41.9129 42.9922 38.5613 45.8203 34.0535 45.8203C29.5379 45.8203 26.3113 43.3438 26.1473 39.6797L29.0067 39.6797C29.1785 41.9297 31.3113 43.3203 34.0067 43.3203C36.9988 43.3203 39.1473 41.6485 39.1473 39.1797C39.1473 36.6172 37.1785 34.8203 33.6473 34.8203L31.7801 34.8203L31.7801 32.3203L33.6473 32.3203C36.4051 32.3203 38.327 30.7266 38.327 28.2735C38.327 25.9219 36.6629 24.3672 34.1004 24.3672C31.6785 24.3672 29.4754 25.7266 29.3738 28.0469L26.6473 28.0469C26.7801 24.3828 30.1238 21.9063 34.1473 21.9063C38.452 21.9063 41.0535 24.8438 41.0535 28.1328C41.0535 30.7578 39.5848 32.6953 37.2332 33.4063L37.2332 33.5938C40.1629 34.0781 41.9129 36.2266 41.9129 39.1797Z" fill="#000000" fillOpacity="1.000000" fillRule="evenodd"/>
-                        </svg>                            
+                        </svg>                 
                         </S.BlockChoiceSvg>
-                        <S.BlockChoiceTitle>Ищете активность, полезную для тела и души.                            
-                        </S.BlockChoiceTitle>
-                    </S.BlockChoice1>          
+                        {coursesList.map(({ id , fitting }) => { return(
+                        <S.BlockChoiceTitle key={id}>{fitting}</S.BlockChoiceTitle>
+                        )})}
+                    </S.BlockChoice1>
                 </S.BlockChoice>   
             </S.BlockForYou>
             <S.Directions>
@@ -157,7 +169,6 @@ export const ChooseCourse = () => {
 
                 </S.ApplicationSvg>              
             </S.Application>
-
         </S.Conteiner>
     )
    
