@@ -1,4 +1,4 @@
-export const courseList = (store) => store.newCourse.courseList;
+export const courseList = (store) => store.coursesApp.allCourses;
 
 export const currentCourseSelector = (store) => store.newCourse.currentCourse;
 

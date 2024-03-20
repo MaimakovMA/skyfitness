@@ -1,3 +1,6 @@
+import { Courses } from "../../components/Courses/Courses";
+
+
 import * as S from './Heading.styles.js';
 import {useDispatch} from 'react-redux'
 import { useAuth } from 'hooks/use-auth';

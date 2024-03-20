@@ -5,10 +5,10 @@ import { useSelector} from "react-redux";
 import { ChangeEmail } from "../../components/ChangeEmail/ChangeEmail";
 import { ChangePass } from "../../components/ChangePass/ChangePass";
 // import { getAllWorkouts } from "../../api";
-// import { courseList } from "../../store/selectors/coursesNew";
-// import { emailSelector, passwordSelector, idSelector } from "../../store/selectors/user";
-// import { setCurrentCourse, setWorkoutList } from "../../store/slices/coursesSlice";
-// import { images } from "../../components/images/images";
+import { courseList } from "../../store/selectors/coursesNew";
+import {  passwordSelector, idSelector } from "../../store/selectors/user";
+import { setCurrentCourse, setWorkoutList } from "../../store/slices/coursesSlice";
+import { images } from "../../components/images/images";
 // import NavigateBlock from "../../components/NavigationBlock/Navi";
 import { useDispatch } from 'react-redux'
 import { getAuth} from 'firebase/auth'
@@ -20,37 +20,37 @@ import { useAuth } from 'hooks/use-auth'
 export const PersonalPage = ({ loading }) => {
   const [isEditEmail, setIsEditEmail] = useState(false);
   const [isEditPass, setIsEditPass] = useState(false);
-  const [isShowForm, setIsShowForm] = useState(false);
+  // const [isShowForm, setIsShowForm] = useState(false);
 
-//   const courses = useSelector();
-//   const userId = useSelector(idSelector);
+  const courses = useSelector(courseList);
+  const userId = useSelector(idSelector);
   const dispatch = useDispatch();
   const auth = getAuth()
   const { email } = useAuth()
-//   const email = useSelector(emailSelector);
-//   const password = useSelector(passwordSelector);
+  // const email = useSelector(emailSelector);
+  const password = useSelector(passwordSelector);
 
 //   получить курсы юзера
 
-//   const coursesForUser = courses.filter(
-//     (course) => course.users && course.users.some((user) => user === userId)
-//   );
+  const coursesForUser = courses.filter(
+    (course) => course.users && course.users.some((user) => user === userId)
+  );
 
-//   useEffect(() => {
-//     getWorkouts()
-//       .then((data) => {
-//         dispatch(setWorkoutList(data));
-//       })
-//       .catch((error) => {
-//         console.log(error.message);
-//       });
-//   }, []);
+  // useEffect(() => {
+  //   getWorkouts()
+  //     .then((data) => {
+  //       dispatch(setWorkoutList(data));
+  //     })
+  //     .catch((error) => {
+  //       console.log(error.message);
+  //     });
+  // }, []);
 
-//   const handleCard = (course) => {
-//     dispatch(setCurrentCourse(course));
-//     localStorage.setItem("selectedCourse", JSON.stringify(course));
-//     setIsShowForm(true);
-//   };
+  const handleCard = (course) => {
+    dispatch(setCurrentCourse(course));
+    localStorage.setItem("selectedCourse", JSON.stringify(course));
+    setIsShowForm(true);
+  };
 
   return (
 
@@ -81,10 +81,10 @@ export const PersonalPage = ({ loading }) => {
           <S.ChangeButton onClick={() => setIsEditEmail(true)}>Редактировать логин</S.ChangeButton>
           <S.ChangeButton onClick={() => setIsEditPass(true)}>Редактировать пароль</S.ChangeButton>
         </S.ChangeDate>
-        {/* <S.CourseWrap> */}
+        <S.CourseWrap>
           <S.Title>Мои курсы</S.Title>
 
-          {/* {loading ? (
+          {loading ? (
             <S.ProfList>
               {coursesForUser.map((course, index) => (
                 <S.Prof key={index} id={course.id}>
@@ -103,10 +103,11 @@ export const PersonalPage = ({ loading }) => {
           ) : (
             <S.LoadingCircle></S.LoadingCircle>
           )}
-        </S.CourseWrap> */}
+        </S.CourseWrap>
         {/* {isShowForm ? <SelectWorkout setIsShowForm={setIsShowForm}></SelectWorkout> : null} */}
         </S.StyledSection>
       </S.Content>
     </S.Wrap>
+  
   );
 };

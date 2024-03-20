@@ -1,11 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+const initialState = {
+  allCourses: [],
+  allWorkouts: []
+  // currentCourse: {},
+  // workoutList: [],
+  // selectedWorkout: "",
+  // // exercisesList: [],
+  // progress: []
+};
+
+
 const coursesSlice = createSlice({
   name: 'courses',
-  initialState: {
-    allCourses: null,
-    allWorkouts: null,
-  },
+  initialState,
   reducers: {
     setAllCourses(state, action) {
       state.allCourses = action.payload;
