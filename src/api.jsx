@@ -25,3 +25,15 @@ export async function getAllCourses() {
   
     return newData;
   }
+
+  export async function getMyCourses() {
+    const response = await fetch(BASE_URL + "/workouts.json", {
+      method: "GET",
+    });
+    if (!response.ok) {
+      throw new Error("Ошибка сервера");
+    }
+    const newData = await response.json();
+  
+    return newData;
+  }

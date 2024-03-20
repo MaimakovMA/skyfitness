@@ -1,8 +1,29 @@
+import { useEffect } from 'react';
 import * as S from './ChooseCourse.Styles.js';
 import { getAllCourses } from 'api.jsx'
+// import { courseList } from 'store/selectors/coursesNew.js';
+// import { setAllCourses } from 'store/slices/coursesSlice.js';
 
 export const ChooseCourse = () => {
 
+    // const courses = useSelector(courseList);
+
+    // useEffect(() => {
+
+    //     getAllCourses().then((courses)=> {
+    //       const courseForYou = [];
+    //      for (const key in courses) {
+           
+    //          const element = courses[key];
+    //          courseForYou.push(element)
+         
+    //      } 
+    //      dispatch(setAllCourses(courseForYou))
+         
+    //       })
+    //    }, []);
+      
+    //   console.log(courses);
     console.log(getAllCourses())
 
     return(

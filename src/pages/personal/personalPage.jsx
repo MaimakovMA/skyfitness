@@ -7,13 +7,14 @@ import { ChangePass } from "../../components/ChangePass/ChangePass";
 // import { getAllWorkouts } from "../../api";
 import { courseList } from "../../store/selectors/coursesNew";
 import {  passwordSelector, idSelector } from "../../store/selectors/user";
-import { setCurrentCourse, setWorkoutList } from "../../store/slices/coursesSlice";
+import { setAllCourses, setCurrentCourse, setWorkoutList } from "../../store/slices/coursesSlice";
 import { images } from "../../components/images/images";
 // import NavigateBlock from "../../components/NavigationBlock/Navi";
 import { useDispatch } from 'react-redux'
 import { getAuth} from 'firebase/auth'
 import { setEmail } from 'store/slices/userSlice'
 import { useAuth } from 'hooks/use-auth'
+import { getAllCourses } from "api";
 
 
 
@@ -52,6 +53,27 @@ export const PersonalPage = ({ loading }) => {
     setIsShowForm(true);
   };
 
+ 
+
+
+ useEffect(() => {
+
+  getAllCourses().then((courses)=> {
+    const courseForYou = [];
+   for (const key in courses) {
+     
+       const element = courses[key];
+       courseForYou.push(element)
+   
+   } 
+   dispatch(setAllCourses(courseForYou))
+   
+    })
+ }, []);
+
+console.log(courses);
+
+
   return (
 
     <S.Wrap>
@@ -84,7 +106,23 @@ export const PersonalPage = ({ loading }) => {
         <S.CourseWrap>
           <S.Title>Мои курсы</S.Title>
 
-          {loading ? (
+          <S.ProfList>
+              {courses.map((course, index) => (
+                <S.Prof key={index} id={course._id}>
+                  <S.CourseName>{course.name}</S.CourseName>
+                  <S.ProfCard src={images[index].src} alt="prof_card"></S.ProfCard>
+
+                  <S.ProfButton
+                    onClick={() => {
+                      handleCard(course);
+                    }}>
+                    Перейти →
+                  </S.ProfButton>
+                </S.Prof>
+              ))}
+            </S.ProfList>
+
+          {/* {loading ? (
             <S.ProfList>
               {coursesForUser.map((course, index) => (
                 <S.Prof key={index} id={course.id}>
@@ -102,7 +140,7 @@ export const PersonalPage = ({ loading }) => {
             </S.ProfList>
           ) : (
             <S.LoadingCircle></S.LoadingCircle>
-          )}
+          )} */}
         </S.CourseWrap>
         {/* {isShowForm ? <SelectWorkout setIsShowForm={setIsShowForm}></SelectWorkout> : null} */}
         </S.StyledSection>
