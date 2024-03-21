@@ -6,11 +6,10 @@ export default function ListOfProgress({ exercises }) {
     <S.List>
       {exercises.map((item) => (
         <S.Item key={exercises.indexOf(item)}>
-          <span>{item.name}</span>
+          <span>{item.name.split('').slice(0, item.name.indexOf("(")-1).join("")}</span>
           <ProgressBar percentage={45}/>
         </S.Item>
       ))}
-
     </S.List>
   )
 }

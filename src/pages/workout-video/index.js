@@ -10,8 +10,11 @@ import { getAllWorkouts } from 'api'
 
 export const WorkoutVideoPage = () => {
   const [modalActive, setModalActive] = useState(0)
-  let workout_id = 'kcx5ai'
+
+  let workout_id = '17oz5f'
+
   const [Workout, setWorkout] = useState()
+
   useEffect(() => {
     getAllWorkouts().then((data) => {
       setWorkout(data[workout_id])
@@ -26,7 +29,7 @@ export const WorkoutVideoPage = () => {
         <WorkoutTitle title={'Йога'} />
         <BreadCrumbs text={Workout.name} />
         {modalActive === 1 ? (
-          <ModalQuestionnaire setModalActive={setModalActive} />
+          <ModalQuestionnaire setModalActive={setModalActive} workout={Workout}/>
         ) : (
           ''
         )}
