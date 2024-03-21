@@ -3,23 +3,27 @@ import * as S from './ChooseCourse.Styles.js';
 import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { useGetCorsesQuery } from 'store/slices/apiSlice.js';
-import React, { Fragment } from "react"
+//import React, { Fragment } from "react"
 
 export const ChooseCourse = () => {
 
     const { id } = useParams();
     const navigate = useNavigate()
+    const { coursesList } = useSelector(({ courses }) => courses);
     
-    const { data, isLoading, isFetching, isSuccess } = useGetCorsesQuery({ id });
-    var data1 = Object.entries(data).map((data) => {})
-    console.log( data)
+    const { data , isLoading, isFetching, isSuccess } = useGetCorsesQuery({ id });
+    //let data1 = Object.keys(data)
+    console.log(data)
+
+
     /*useEffect(() => {
       if( !isLoading && !isFetching && isSuccess) {
         navigate('/')
       }
-    }, [isLoading, isFetching, isSuccess])*/
-
-    const { coursesList } = useSelector(({ courses }) => courses);
+      
+    }, [isLoading, isFetching, isSuccess]);*/
+    
+    
 
     return (
         <S.Conteiner>
@@ -28,14 +32,15 @@ export const ChooseCourse = () => {
             <S.LogoChoose src="/img/logo.svg" alt="logo" />
             </S.LogoBox>
             {coursesList.map(({  id, name , image }) => { return(
-                <Fragment key={id}>
+                
                
-            <S.BlockYoga >
+            <S.BlockYoga key={id}>
+                
                 <S.BlockYogaCard style={{ backgroundImage: `url(${image})`}} >
                 <S.CourseName >{name}</S.CourseName>
                 </S.BlockYogaCard>
             </S.BlockYoga>
-                </Fragment>
+               
             )})}
             <S.BlockForYou>
                 <S.TitleForYou>Подойдет для вас, если:</S.TitleForYou>

@@ -11,7 +11,6 @@ export const apiSlice = createApi({
       query: ({ id }) => `/courses/${id}.json`,
       providesTags: ["courses"],
     }),
-    
     }),
   })
  

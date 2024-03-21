@@ -25,18 +25,19 @@ const userSlice = createSlice ({
             state.token = null;
             state.id = null;
         },
-        /*addItemToCourse: (state, action) => {
+        addItemToCourse: (state, action) => {
            let newCourse = [...state.course ];
            const found = state.course.find(({id}) => id === playload.id)
            if(found) {
             newCourse = newCourse.map((item) => {
               return item.id === playload.id ?  (navigate('/profile')) : item;
            }); 
-           } else  newCourse.push({pleyload, quantity: 1})
-        },*/
+           } else  newCourse.push({pleyload, quantity: 1});
+           state.course = newCourse;
+        },
     },
 });
 
-export const { setUser, removeUser } = userSlice.actions;
+export const { setUser, removeUser, addItemToCourse } = userSlice.actions;
 
 export default userSlice.reducer;

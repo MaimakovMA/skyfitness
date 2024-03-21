@@ -2,7 +2,6 @@ import * as S from './Cards.js';
 import { useAuth } from 'hooks/use-auth';
 import { useSelector } from "react-redux";
 import React, { useState } from "react";
-//import { images } from "../images/images.jsx";
 
 export const Cards =() => {
 
@@ -16,7 +15,7 @@ export const Cards =() => {
     return isAuth ? (
     <S.MainBlockCards>
       { paginatedData ?.sort((a, b) => a.order - b.order).map(({ id , name, image }) => { return(  
-        <S.BlockCard  key={id}>   
+        <S.BlockCard key={id}>  
           <S.Card   style={{ backgroundImage: `url(${image})`}}>
             <S.CourseName >{name}</S.CourseName>
           </S.Card>
@@ -25,8 +24,8 @@ export const Cards =() => {
     </S.MainBlockCards>) : (
     <S.MainBlockCards>
       { paginatedData ?.sort((a, b) => a.order - b.order).map(({ id , name, image }) => { return(  
-        <S.BlockCard to={`/selectworkout/${id}`} key={id}>        
-          <S.Card style={{ backgroundImage: `url(${image})`}} >
+        <S.BlockCard to={`/selectworkout/${id}`} key={id}>         
+          <S.Card  style={{ backgroundImage: `url(${image})`}} >
             <S.CourseName >{name}</S.CourseName>
           </S.Card>
         </S.BlockCard>
