@@ -12,8 +12,21 @@ export default function ModalQuestionnaire({ setModalActive, workout }) {
       {workout.exercises.map((item) => {
         return (
           <>
-            <S.InputLabel>Сколько раз вы сделали {item.name.split('').slice(0, item.name.indexOf("(")-1).join("").toLowerCase()}?</S.InputLabel>
-            <S.ModalInput placeholder="Введите значение"></S.ModalInput>
+            <S.InputLabel>
+              Сколько раз вы сделали{' '}
+              {item.name
+                .split('')
+                .slice(0, item.name.indexOf('(') - 1)
+                .join('')
+                .toLowerCase()}
+              ?
+            </S.InputLabel>
+            <S.ModalInput
+              placeholder="Введите значение"
+              type="number"
+              min="1"
+              max={item.quantity}
+            ></S.ModalInput>
           </>
         )
       })}
