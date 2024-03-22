@@ -8,7 +8,7 @@ const initialState = {
     token: null,
     id: null,
     currentUser: [],
-    course: [],
+    courses: [],
 };
 
 const userSlice = createSlice ({
@@ -19,21 +19,22 @@ const userSlice = createSlice ({
             state.email = action.payload.email;
             state.token = action.payload.token;
             state.id = action.payload.id;
+            
         },
         removeUser(state) {
             state.email = null;
             state.token = null;
             state.id = null;
         },
-        addItemToCourse: (state, action) => {
-           let newCourse = [...state.course ];
-           const found = state.course.find(({id}) => id === playload.id)
+        addItemToCourse: (state, { payload }) => {
+           let newCourse = [...state.courses ];
+           const found = state.courses.find(({id}) => id === payload.id)
            if(found) {
             newCourse = newCourse.map((item) => {
-              return item.id === playload.id ?  (navigate('/profile')) : item;
+              return item.id === payload.id ?  { ...item, quantity: payload.quantity || item.quantity + 1 } : item;
            }); 
-           } else  newCourse.push({pleyload, quantity: 1});
-           state.course = newCourse;
+           } else  newCourse.push({...payload, quantity: 1});
+           state.courses = newCourse;
         },
     },
 });

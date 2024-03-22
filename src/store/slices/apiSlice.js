@@ -5,7 +5,7 @@ const BASE_URL = "https://auth-exmple-d8c4f-default-rtdb.europe-west1.firebaseda
 export const apiSlice = createApi({
   reducerPath: "firebase",
   baseQuery: fetchBaseQuery({ baseUrl: BASE_URL }),
-  tagTypes: ["courses"],
+   tagTypes: ["courses"],
   endpoints: (builder) => ({
     getCorses: builder.query({
       query: ({ id }) => `/courses/${id}.json`,

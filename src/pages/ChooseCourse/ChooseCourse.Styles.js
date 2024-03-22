@@ -20,6 +20,7 @@ export const BlockYoga = styled.div`
 `
 
 export const BlockYogaCard = styled.div`
+
 `
 
 export const BlockForYou = styled.div`

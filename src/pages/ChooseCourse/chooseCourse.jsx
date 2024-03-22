@@ -3,45 +3,57 @@ import * as S from './ChooseCourse.Styles.js';
 import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { useGetCorsesQuery } from 'store/slices/apiSlice.js';
-//import React, { Fragment } from "react"
+import { addItemToCourse } from 'store/slices/userSlice.js';
+import { useDispatch } from "react-redux";
+import { useAuth } from 'hooks/use-auth';
+//import { useState } from 'react';
 
-export const ChooseCourse = () => {
-
+export const ChooseCourse = (item) => {
+    
+    const { name, image } = item
+    
     const { id } = useParams();
     const navigate = useNavigate()
-    const { coursesList } = useSelector(({ courses }) => courses);
+    //const { coursesList } = useSelector(({ courses }) => courses);
+    const dispatch = useDispatch();
+    const { isAuth } = useAuth()
     
-    const { data , isLoading, isFetching, isSuccess } = useGetCorsesQuery({ id });
-    //let data1 = Object.keys(data)
+    const { data = {} , isLoading, isFetching, isSuccess } = useGetCorsesQuery({ id });
+    
+    //let data1 = Object.entries(data)
+
     console.log(data)
 
-
-    /*useEffect(() => {
-      if( !isLoading && !isFetching && isSuccess) {
+    useEffect(() => {
+        
+    
+      /*if( !isLoading && !isFetching && isSuccess) {
         navigate('/')
-      }
-      
-    }, [isLoading, isFetching, isSuccess]);*/
-    
-    
+      }*/
+    }, [isLoading, isFetching, isSuccess]);
 
-    return (
+    const addToCourse = () => {
+    dispatch(addItemToCourse(data));
+  };
+
+  const onClickLogin = () => {
+    navigate('/login')
+  }
+
+    return  !data ?  ( 
+        <S.Section>Loading...</S.Section>
+    ) : ( 
         <S.Conteiner>
-            
+           
             <S.LogoBox to="/">
             <S.LogoChoose src="/img/logo.svg" alt="logo" />
             </S.LogoBox>
-            {coursesList.map(({  id, name , image }) => { return(
-                
-               
-            <S.BlockYoga key={id}>
-                
-                <S.BlockYogaCard style={{ backgroundImage: `url(${image})`}} >
-                <S.CourseName >{name}</S.CourseName>
+            <S.BlockYoga >
+                <S.BlockYogaCard style={{ backgroundImage: `url(${data.image})`}} >
+                <S.CourseName >{data.name}</S.CourseName>
                 </S.BlockYogaCard>
-            </S.BlockYoga>
-               
-            )})}
+            </S.BlockYoga>  
+            
             <S.BlockForYou>
                 <S.TitleForYou>Подойдет для вас, если:</S.TitleForYou>
                 <S.BlockChoice>
@@ -72,9 +84,9 @@ export const ChooseCourse = () => {
                             <path id="3" d="M41.9129 39.1797C41.9129 42.9922 38.5613 45.8203 34.0535 45.8203C29.5379 45.8203 26.3113 43.3438 26.1473 39.6797L29.0067 39.6797C29.1785 41.9297 31.3113 43.3203 34.0067 43.3203C36.9988 43.3203 39.1473 41.6485 39.1473 39.1797C39.1473 36.6172 37.1785 34.8203 33.6473 34.8203L31.7801 34.8203L31.7801 32.3203L33.6473 32.3203C36.4051 32.3203 38.327 30.7266 38.327 28.2735C38.327 25.9219 36.6629 24.3672 34.1004 24.3672C31.6785 24.3672 29.4754 25.7266 29.3738 28.0469L26.6473 28.0469C26.7801 24.3828 30.1238 21.9063 34.1473 21.9063C38.452 21.9063 41.0535 24.8438 41.0535 28.1328C41.0535 30.7578 39.5848 32.6953 37.2332 33.4063L37.2332 33.5938C40.1629 34.0781 41.9129 36.2266 41.9129 39.1797Z" fill="#000000" fillOpacity="1.000000" fillRule="evenodd"/>
                         </svg>                 
                         </S.BlockChoiceSvg>
-                        {coursesList.map(({ id , fitting }) => { return(
-                        <S.BlockChoiceTitle key={id}>{fitting}</S.BlockChoiceTitle>
-                        )})}
+                        
+                        <S.BlockChoiceTitle >{data.fitting}</S.BlockChoiceTitle>
+                        
                     </S.BlockChoice1>
                 </S.BlockChoice>   
             </S.BlockForYou>
@@ -83,32 +95,15 @@ export const ChooseCourse = () => {
                     Направления:
                 </S.DirectionsTitle>
                     <S.DirectionsListBlock>
-                    <S.DirectionsList>
-                        <S.DirectionsItem>
-                            Йога для новичков
-                        </S.DirectionsItem>
-                        <S.DirectionsItem>
-                            Классическая йога
-                        </S.DirectionsItem>
-                        <S.DirectionsItem>
-                            Йогатерапия
-                        </S.DirectionsItem>
+                    
+                    <S.DirectionsList >
+                        <S.DirectionsItem>{data.directions}</S.DirectionsItem>
                     </S.DirectionsList>
-                    <S.DirectionsList>
-                        <S.DirectionsItem>
-                            Кундалини-йога
-                        </S.DirectionsItem>
-                        <S.DirectionsItem>
-                            Хатха-йога
-                        </S.DirectionsItem>
-                        <S.DirectionsItem>
-                            Аштанга-йога
-                        </S.DirectionsItem>
-                    </S.DirectionsList>
+                    
                </S.DirectionsListBlock>
-               <S.DirectionsTitle2>
-                    Благодаря комплексному воздействию упражнений происходит проработка всех групп мышц, тренировка суставов, улучшается циркуляция крови. Кроме того, упражнения дарят отличное настроение, заряжают бодростью и помогают противостоять стрессам.
-               </S.DirectionsTitle2>
+               
+               <S.DirectionsTitle2 >{data.description}</S.DirectionsTitle2>
+
             </S.Directions>
             <S.Application>                
                 <S.ApplicationTitle>
@@ -116,9 +111,15 @@ export const ChooseCourse = () => {
                     с вами, поможем с выбором направления и тренера, с которым тренировки принесут здоровье и радость!
                 </S.ApplicationTitle>
                 <S.ApplicationBtnDiv>
-                    <S.ApplicationBtn>
+                { isAuth ? (
+                    <S.ApplicationBtn onClick={addToCourse}>
                         Записаться на тренировку
                     </S.ApplicationBtn>
+                    ) : (
+                   <S.ApplicationBtn onClick={onClickLogin}>
+                        Авторизуйтесь
+                    </S.ApplicationBtn>
+                    )} 
                 </S.ApplicationBtnDiv>
                 <S.ApplicationSvg>
                 <svg width="345.795410" height="337.525665" viewBox="0 0 345.795 337.526" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
@@ -170,11 +171,13 @@ export const ChooseCourse = () => {
 	<path id="Ellipse 638" d="M155.66 47.6997L170.472 48.1596C185.597 48.7257 197.222 66.1697 196.438 87.1218C195.654 108.074 182.757 124.6 167.632 124.034L152.621 123.547" stroke="#271A58" strokeOpacity="1.000000" strokeWidth="1.000000" strokeLinecap="round"/>
 	<path id="Vector 4371" d="M88.2422 290.765C103.385 296.71 124.754 300.673 146.18 268.941C165.945 239.667 173.151 228.568 185.014 194.399M200.835 142.925C205.548 124.041 207.32 109.276 205.937 96.0525C203.662 74.3042 197.838 63.2387 185.142 54.7764M121.888 225.513C123.046 226.135 124.418 225.981 125.96 225.15C126.814 224.69 127.72 224.021 128.67 223.162M164.19 141.043C164.126 139.682 164 138.327 163.806 136.973C163.188 132.645 161.89 128.319 159.818 123.825" stroke="#271A58" strokeOpacity="1.000000" strokeWidth="1.000000"/>
 </svg>
-
-
                 </S.ApplicationSvg>              
             </S.Application>
+           
+            
+
         </S.Conteiner>
+
+              
     )
-   
-}
+   }
