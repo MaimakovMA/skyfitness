@@ -13,7 +13,7 @@ export const AppRoutes = () => {
       <Route path="/" element={<ListOfCourses />}></Route>
       <Route path="/profile" element={<Profile />} />
       <Route path="/login" element={<Login />}></Route>
-      <Route path="/workout" element={<WorkoutVideoPage />} />
+      <Route path="/workout/:id" element={<WorkoutVideoPage />} />
       <Route path="/SignUp" element={<SignUp />}></Route>
       <Route path="*" element={<NotFoundPage />}></Route>
       <Route path="/selectworkout/:id" element={<ChooseCourse />} />

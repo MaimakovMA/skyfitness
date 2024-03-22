@@ -1,7 +1,29 @@
+import { useState } from 'react'
 import * as S from './styles.js'
+import { useParams } from 'react-router-dom'
+import { getAuth } from 'firebase/auth'
+import { updateProgress } from 'api.jsx'
 
 export default function ModalQuestionnaire({ setModalActive, workout }) {
+  const params = useParams()
+  const workout_id = params.id
+  const auth = getAuth()
+  console.log(auth)
+
+  const [values, setValues] = useState(null)
+
+  const handleChange = (event) => {
+    setValues({ ...values, [event.target.id]: event.target.value })
+  }
+
   const sendForm = () => {
+    const id = auth.currentUser.uid
+    debugger
+    const arr = []
+    for (let key in values) {
+      arr.push({ name: key, quantity: values[key] })
+    }
+    updateProgress({id, workout_id, exercises: arr})
     setModalActive(2)
     setTimeout(() => setModalActive(0), 2000)
   }
@@ -26,6 +48,8 @@ export default function ModalQuestionnaire({ setModalActive, workout }) {
               type="number"
               min="1"
               max={item.quantity}
+              id={item.name}
+              onChange={handleChange}
             ></S.ModalInput>
           </>
         )
