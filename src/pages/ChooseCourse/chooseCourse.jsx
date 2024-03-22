@@ -1,50 +1,26 @@
-import { useEffect } from 'react';
 import * as S from './ChooseCourse.Styles.js';
-import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { useGetCorsesQuery } from 'store/slices/apiSlice.js';
-import { addItemToCourse } from 'store/slices/userSlice.js';
 import { useDispatch } from "react-redux";
 import { useAuth } from 'hooks/use-auth';
-//import { useState } from 'react';
 
-export const ChooseCourse = (item) => {
-    
-    const { name, image } = item
+export const ChooseCourse = () => {
     
     const { id } = useParams();
-    const navigate = useNavigate()
-    //const { coursesList } = useSelector(({ courses }) => courses);
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const { isAuth } = useAuth()
     
-    const { data = {} , isLoading, isFetching, isSuccess } = useGetCorsesQuery({ id });
-    
-    //let data1 = Object.entries(data)
+    const { data = {} } = useGetCorsesQuery({ id });
 
-    console.log(data)
-
-    useEffect(() => {
-        
-    
-      /*if( !isLoading && !isFetching && isSuccess) {
-        navigate('/')
-      }*/
-    }, [isLoading, isFetching, isSuccess]);
-
-    const addToCourse = () => {
-    dispatch(addItemToCourse(data));
-  };
-
-  const onClickLogin = () => {
+    const onClickLogin = () => {
     navigate('/login')
-  }
+    }
 
     return  !data ?  ( 
         <S.Section>Loading...</S.Section>
     ) : ( 
         <S.Conteiner>
-           
             <S.LogoBox to="/">
             <S.LogoChoose src="/img/logo.svg" alt="logo" />
             </S.LogoBox>
@@ -53,7 +29,6 @@ export const ChooseCourse = (item) => {
                 <S.CourseName >{data.name}</S.CourseName>
                 </S.BlockYogaCard>
             </S.BlockYoga>  
-            
             <S.BlockForYou>
                 <S.TitleForYou>Подойдет для вас, если:</S.TitleForYou>
                 <S.BlockChoice>
@@ -112,7 +87,7 @@ export const ChooseCourse = (item) => {
                 </S.ApplicationTitle>
                 <S.ApplicationBtnDiv>
                 { isAuth ? (
-                    <S.ApplicationBtn onClick={addToCourse}>
+                    <S.ApplicationBtn>
                         Записаться на тренировку
                     </S.ApplicationBtn>
                     ) : (
