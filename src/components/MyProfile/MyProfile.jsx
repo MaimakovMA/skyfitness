@@ -7,6 +7,7 @@ import * as S from './MyProfile.styles'
 import { getAuth, updateEmail, updatePassword } from 'firebase/auth'
 import { useDispatch } from 'react-redux'
 
+
 function MyProfile() {
     const dispatch = useDispatch()
     const userName = localStorage.getItem('userEmail')
@@ -16,9 +17,6 @@ function MyProfile() {
     const [newEmail, setNewEmail] = useState('')
     const [newPassword, setNewPassword] = useState('')
     const [isEditing, setIsEditing] = useState(false)
-  
-
-
     
     const handleEscape = (event) => {
       if (event.key === 'Escape') {
@@ -69,7 +67,7 @@ return (
 
     <S.HeaderStyleMyProfile>
     <S.NamePages>Мой профиль</S.NamePages>
-    <S.LoginPassName>Логин: {userName}</S.LoginPassName>
+    <S.LoginPassName>Логин:{userName}</S.LoginPassName>
     <S.LoginPassNameWithPadding>Пароль: ********</S.LoginPassNameWithPadding>
 
     {visibleLogin ? (

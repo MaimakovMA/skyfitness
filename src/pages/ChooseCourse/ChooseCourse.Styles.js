@@ -5,6 +5,9 @@ export const Conteiner = styled.div`
     padding-right: 140px;
     padding-left: 140px;
 `
+
+export const Section = styled.div``
+
 export const LogoBox = styled(Link)``
 
 export const LogoChoose = styled.img`
@@ -16,7 +19,8 @@ export const BlockYoga = styled.div`
     padding-top: 75px;
 `
 
-export const BlockYogaCard = styled.img`
+export const BlockYogaCard = styled.div`
+
 `
 
 export const BlockForYou = styled.div`
@@ -142,3 +146,5 @@ export const ApplicationSvg = styled.svg`
     right: 127px;
     bottom: -631px;
 `
+
+export const CourseName = styled.h2``
