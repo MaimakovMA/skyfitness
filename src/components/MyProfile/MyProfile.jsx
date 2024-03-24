@@ -8,9 +8,12 @@ import { getAuth, updateEmail, updatePassword } from 'firebase/auth'
 import { useDispatch } from 'react-redux'
 
 
+
 function MyProfile() {
+  
     const dispatch = useDispatch()
-    const userName = localStorage.getItem('userEmail')
+    const userName = localStorage.getItem('email');
+    const userPassword = localStorage.getItem('password');
     const auth = getAuth()
     const [visibleLogin, setVisibleLogin] = useState(false)
     const [visiblePas, setVisiblePas] = useState(false)
@@ -36,8 +39,9 @@ function MyProfile() {
     }, [isEditing])
   
     const handleLogin = () => {
-      setIsEditing(true)
       setVisibleLogin(!visibleLogin)
+      /*setIsEditing(true)
+      
       const user = auth.currentUser
       updateEmail(user, newEmail)
         .then(() => {
@@ -46,7 +50,7 @@ function MyProfile() {
         })
         .catch(() => {
           alert('Некорректный логин')
-        })
+        })*/
     }
   
     const handlePassword = () => {
@@ -68,10 +72,10 @@ return (
     <S.HeaderStyleMyProfile>
     <S.NamePages>Мой профиль</S.NamePages>
     <S.LoginPassName>Логин:{userName}</S.LoginPassName>
-    <S.LoginPassNameWithPadding>Пароль: ********</S.LoginPassNameWithPadding>
+    <S.LoginPassNameWithPadding>Пароль: {userPassword}</S.LoginPassNameWithPadding>
 
     {visibleLogin ? (
-      <CorrectLogin onClick={handleLogin} setNew={setNewEmail} />
+      <CorrectLogin onClick={handleLogin} />
     ) : (
       <S.ProfileButton onClick={handleLogin}>
         Редактировать логин

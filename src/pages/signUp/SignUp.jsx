@@ -29,6 +29,7 @@ export const SignUp = () => {
           email: user.email,
           id: user.uid,
           token: user.accessToken,
+          password: password,
       }));
       navigate('/login');
   })
