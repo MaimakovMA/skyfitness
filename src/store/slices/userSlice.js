@@ -1,14 +1,27 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getDatabase, ref, set } from "firebase/database";
+import { getDatabase, onValue, ref, set } from "firebase/database";
 
-export async function addCourse(userId, courseId) {
+export async function addCourseUser(userId, courseId) {
     const db = getDatabase();
-    const response = await db.ref(`/courses/${courseId}/users`).set(userId)
-  
-    const newData = await response.json();
-    
-    return newData
-  }
+
+    //const response = await db.ref(`/courses/${courseId}/users`).set(userId)
+   
+ set(ref(db, 'courses/'), {
+            userId: userId,    
+          }).then((response) => {
+            debugger
+            console.log(response)
+        }).catch((error) => {
+            debugger
+console.log(error)
+        }) 
+        }
+
+  /*var starCountRef = firebase.database().ref('posts/' + postId + '/starCount');
+starCountRef.on('value', (snapshot) => {
+  const data = snapshot.val();
+  updateStarCount(postElement, data);
+});*/
 
 const initialState = {
     email: null,
