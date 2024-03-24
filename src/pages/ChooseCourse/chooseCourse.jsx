@@ -25,8 +25,9 @@ export const ChooseCourse = () => {
             <S.LogoChoose src="/img/logo.svg" alt="logo" />
             </S.LogoBox>
             <S.BlockYoga >
-                <S.BlockYogaCard style={{ backgroundImage: `url(${data.image})`}} >
                 <S.CourseName >{data.name}</S.CourseName>
+                <S.BlockYogaCard style={{ backgroundImage: `url(${data.image})`}} >
+                
                 </S.BlockYogaCard>
             </S.BlockYoga>  
             <S.BlockForYou>
@@ -41,7 +42,14 @@ export const ChooseCourse = () => {
                             <defs/>
                             <rect id="Frame 56953" rx="33.500000" width="67.000000" height="67.000000" fill="#C7E957" fillOpacity="1.000000"/>
                             <path id="1" d="M34.3035 22.2266L37.1238 22.2266L37.1238 45.5L34.3035 45.5L34.3035 25.1797L34.1629 25.1797L28.4832 28.9531L28.4832 26.0938L34.3035 22.2266Z" fill="#000000" fillOpacity="1.000000" fillRule="evenodd"/>
-                        </svg>
+                        </svg>                                       
+                        </S.BlockChoiceSvg>
+                        
+                        <S.BlockChoiceTitle >{data.fitting['0']}</S.BlockChoiceTitle>
+                        
+                    </S.BlockChoice1>
+                    <S.BlockChoice1>
+                        <S.BlockChoiceSvg>                        
                         <svg width="67.000000" height="67.000000" viewBox="0 0 67 67" fill="none" xmlns="http://www.w3.org/2000/svg" >
                             <desc>
                                     Created with Pixso.
@@ -49,7 +57,14 @@ export const ChooseCourse = () => {
                             <defs/>
                             <rect id="Frame 56953" rx="33.500000" width="67.000000" height="67.000000" fill="#C7E957" fillOpacity="1.000000"/>
                             <path id="2" d="M41.3738 45.5L26.6863 45.5L26.6863 43.4531L34.3738 35.0469C37.0613 32.1016 38.327 30.5078 38.327 28.3672C38.327 25.9063 36.3973 24.3672 33.8738 24.3672C31.1785 24.3672 29.4598 26.125 29.4598 28.7735L26.7801 28.7735C26.7801 24.6797 29.8817 21.9063 33.9598 21.9063C38.0535 21.9063 40.9598 24.7735 40.9598 28.3672C40.9598 30.9453 39.7801 32.9453 35.7801 37.2266L30.5535 42.8203L30.5535 43L41.3738 43L41.3738 45.5Z" fill="#000000" fillOpacity="1.000000" fillRule="evenodd"/>
-                        </svg>
+                        </svg>                                         
+                        </S.BlockChoiceSvg>
+                        
+                        <S.BlockChoiceTitle >{data.fitting['1']}</S.BlockChoiceTitle>
+                        
+                    </S.BlockChoice1>
+                    <S.BlockChoice1>
+                        <S.BlockChoiceSvg>                        
                         <svg width="67.000000" height="67.000000" viewBox="0 0 67 67" fill="none" xmlns="http://www.w3.org/2000/svg" >
                             <desc>
                                     Created with Pixso.
@@ -60,7 +75,7 @@ export const ChooseCourse = () => {
                         </svg>                 
                         </S.BlockChoiceSvg>
                         
-                        <S.BlockChoiceTitle >{data.fitting}</S.BlockChoiceTitle>
+                        <S.BlockChoiceTitle >{data.fitting['2']}</S.BlockChoiceTitle>
                         
                     </S.BlockChoice1>
                 </S.BlockChoice>   
@@ -72,7 +87,14 @@ export const ChooseCourse = () => {
                     <S.DirectionsListBlock>
                     
                     <S.DirectionsList >
-                        <S.DirectionsItem>{data.directions}</S.DirectionsItem>
+                        <S.DirectionsItem>{data.directions['0']}</S.DirectionsItem>
+                        <S.DirectionsItem>{data.directions['1']}</S.DirectionsItem>
+                        <S.DirectionsItem>{data.directions['2']}</S.DirectionsItem>                        
+                    </S.DirectionsList>
+                    <S.DirectionsList >
+                        <S.DirectionsItem>{data.directions['3']}</S.DirectionsItem>
+                        <S.DirectionsItem>{data.directions['4']}</S.DirectionsItem>
+                        <S.DirectionsItem>{data.directions['5']}</S.DirectionsItem>                        
                     </S.DirectionsList>
                     
                </S.DirectionsListBlock>
