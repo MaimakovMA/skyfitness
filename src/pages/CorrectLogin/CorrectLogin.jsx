@@ -1,5 +1,9 @@
 import { createGlobalStyle } from 'styled-components'
-import * as S from './CorrectLoginStyle'
+import * as S from './CorrectLoginStyle';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { getAuth, updateProfile } from "firebase/auth";
+import { setEmail } from 'store/slices/userSlice.js';
 
 const GlobalStyle = createGlobalStyle`
 * {
@@ -46,10 +50,29 @@ body {
 }
 
 `
-export default function CorrectLogin({ onClick, setNew }) {
-  const setDataOnChange = (event, setData) => {
-    setData(event.target.value)
-  }
+export default function CorrectLogin() {
+
+  const [emailNew, setEmailNew] = useState('');
+  const dispatch = useDispatch();
+  const userName = localStorage.getItem('email');
+
+  const hendleNewLogin = (event) => {
+    event.preventDefault()
+    const auth = getAuth();
+    user.updateProfile(auth.currentUser, {
+      displayName: "userName"
+    })
+    .then(({user}) => {
+      dispatch(setEmail({
+        emailNew: user.emailNew,
+        
+      }));
+      
+      return emailNew
+      
+  }) 
+    .catch(() => alert ('Неправильное имя пользователя или пароль!'))
+  };
 
   return (
     <S.PageContainer>
@@ -62,14 +85,17 @@ export default function CorrectLogin({ onClick, setNew }) {
         <S.LoginName>Новый логин:</S.LoginName>
         <S.Inputs>
           <S.ModalInput
-            type="text"
-            name="login"
-            placeholder="Логин"
-            onChange={(event) => setDataOnChange(event, setNew)}
+           className="login"
+           type="email"
+           name="login"
+           value={emailNew}
+           placeholder="Почта"
+           onChange={(event) => setEmailNew(event.target.value)}
+           required
           />
         </S.Inputs>
         <S.Buttons>
-          <S.PrimaryButton onClick={onClick}>Сохранить</S.PrimaryButton>
+          <S.PrimaryButton onClick={(event) => hendleNewLogin(event)}>Сохранить</S.PrimaryButton>
         </S.Buttons>
       </S.ModalForm>
     </S.PageContainer>

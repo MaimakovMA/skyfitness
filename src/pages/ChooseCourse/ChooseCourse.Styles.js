@@ -6,7 +6,8 @@ export const Conteiner = styled.div`
     padding-left: 140px;
 `
 
-export const Section = styled.div``
+export const Section = styled.div`
+`
 
 export const LogoBox = styled(Link)`
 

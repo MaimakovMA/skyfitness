@@ -3,6 +3,7 @@ import { AppRoutes } from "./routes";
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getCorses } from "store/slices/coursesSlice.js";
+import { getWorkouts } from "store/slices/workoutsSlice.js";
 
 export const App = () => {
 
@@ -10,6 +11,7 @@ export const App = () => {
 
   useEffect(() => {
     dispatch(getCorses());
+    dispatch(getWorkouts());
   }, [dispatch]);
 
   return (

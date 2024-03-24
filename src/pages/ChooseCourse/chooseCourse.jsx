@@ -3,8 +3,9 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useGetCorsesQuery } from 'store/slices/apiSlice.js';
 import { useDispatch } from "react-redux";
 import { useAuth } from 'hooks/use-auth';
+import { addItemToCourse } from 'store/slices/userSlice.js';
 
-export const ChooseCourse = () => {
+export const ChooseCourse = ({item}) => {
     
     const { id } = useParams();
     const navigate = useNavigate();
@@ -12,10 +13,15 @@ export const ChooseCourse = () => {
     const { isAuth } = useAuth()
     
     const { data = {} } = useGetCorsesQuery({ id });
-
+    
     const onClickLogin = () => {
     navigate('/login')
     }
+
+    const addToCart = () => {
+        dispatch(addItemToCourse(data));
+        navigate('/profile')
+      };
 
     return  !data ?  ( 
         <S.Section>Loading...</S.Section>
@@ -109,7 +115,7 @@ export const ChooseCourse = () => {
                 </S.ApplicationTitle>
                 <S.ApplicationBtnDiv>
                 { isAuth ? (
-                    <S.ApplicationBtn>
+                    <S.ApplicationBtn onClick={addToCart}>
                         Записаться на тренировку
                     </S.ApplicationBtn>
                     ) : (

@@ -6,12 +6,19 @@ export const apiSlice = createApi({
   reducerPath: "firebase",
   baseQuery: fetchBaseQuery({ baseUrl: BASE_URL }),
    tagTypes: ["courses"],
-  endpoints: (builder) => ({
+   endpoints: (builder) => ({
     getCorses: builder.query({
       query: ({ id }) => `/courses/${id}.json`,
       providesTags: ["courses"],
     }),
+    tagTypes: ["workouts"],
+   endpoints: (builder) => ({
+    getWorkouts: builder.query({
+      query: ({ id }) => `/workouts/${id}.json`,
+      providesTags: ["workouts"],
+    }),
+  }),
     }),
   })
  
-export const { useGetCorsesQuery } = apiSlice;
+export const { useGetCorsesQuery, useGetWorkoutsQuery } = apiSlice;
