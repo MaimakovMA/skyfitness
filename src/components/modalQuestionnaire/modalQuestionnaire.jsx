@@ -2,13 +2,12 @@ import { useState } from 'react'
 import * as S from './styles.js'
 import { useParams } from 'react-router-dom'
 import { getAuth } from 'firebase/auth'
-import { updateProgress } from 'api.jsx'
+import { saveProgress } from 'api.jsx'
 
 export default function ModalQuestionnaire({ setModalActive, workout }) {
   const params = useParams()
   const workout_id = params.id
   const auth = getAuth()
-  console.log(auth)
 
   const [values, setValues] = useState(null)
 
@@ -18,12 +17,11 @@ export default function ModalQuestionnaire({ setModalActive, workout }) {
 
   const sendForm = () => {
     const id = auth.currentUser.uid
-    debugger
     const arr = []
     for (let key in values) {
       arr.push({ name: key, quantity: values[key] })
     }
-    updateProgress({id, workout_id, exercises: arr})
+    saveProgress({ id, workout_id, exercises: arr })
     setModalActive(2)
     setTimeout(() => setModalActive(0), 2000)
   }
