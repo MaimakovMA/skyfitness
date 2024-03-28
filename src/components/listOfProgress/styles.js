@@ -5,6 +5,7 @@ export const List = styled.ul`
   flex-direction: column;
   gap: 20px;
   padding-inline-start: 0px;
+
 `
 
 export const Item = styled.li`
@@ -20,4 +21,5 @@ export const Item = styled.li`
   justify-content: space-between;
   padding-inline-start: 40px;
   padding-inline-start: 0;
+  gap: 10px
 `

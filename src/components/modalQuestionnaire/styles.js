@@ -22,7 +22,7 @@ export const ModalForm = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-shadow: 5px 0px 50px rgba(0, 0, 0, .5); ;
+  box-shadow: 5px 0px 50px rgba(0, 0, 0, 0.5);
 `
 
 export const ModalLogo = styled.div`
@@ -43,10 +43,13 @@ export const InputLabel = styled.p`
 `
 
 export const ModalInput = styled.input`
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 24px;
   width: 100%;
   border: none;
   border-bottom: 1px solid #d0cece;
-  padding: 8px 1px;
+  padding: 8px 8px 8px 10px;
 
   &::placeholder {
     color: rgb(208, 206, 206);
@@ -56,6 +59,15 @@ export const ModalInput = styled.input`
     line-height: 24px;
     letter-spacing: -0.05px;
     text-align: left;
+  }
+  &::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+
+    &:focus {
+      outline: none;
+    }
   }
 `
 
