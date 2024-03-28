@@ -12,7 +12,7 @@ export const ChooseCourse = ({item}) => {
     const dispatch = useDispatch();
     const { isAuth } = useAuth()
     
-    const { data = {} } = useGetCorsesQuery({ id });
+    const { data } = useGetCorsesQuery({ id });
     
     const onClickLogin = () => {
     navigate('/login')
