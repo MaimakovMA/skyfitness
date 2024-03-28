@@ -5,18 +5,43 @@ export const Conteiner = styled.div`
     padding-right: 140px;
     padding-left: 140px;
 `
-export const LogoBox = styled(Link)``
+
+export const Section = styled.div`
+`
+
+export const LogoBox = styled(Link)`
+
+`
 
 export const LogoChoose = styled.img`
     padding-top: 30px;
+    padding-bottom: 75px;
     
 `
 
 export const BlockYoga = styled.div`
-    padding-top: 75px;
+    display: flex;
+    justify-content: space-between;
+    border-radius: 30px;
+    backdrop-filter: blur(29.04px);
+    background: rgba(205, 205, 205, 0.1);
+`
+export const CourseName = styled.h2`
+    margin:0;
+    padding-top: 30px;
+    padding-left:30px;
+    font-size: 64px;
+    font-weight: 400;
+    line-height: 72px;
+    text-align: left;
 `
 
-export const BlockYogaCard = styled.img`
+export const BlockYogaCard = styled.div`
+    height: 310px;
+    width: 450px;
+    background-repeat: no-repeat;
+    
+
 `
 
 export const BlockForYou = styled.div`
@@ -33,10 +58,13 @@ export const TitleForYou = styled.h2`
 
 export const BlockChoice = styled.div`
     display: flex;
-    justify-content: space-between;
+    
 `
 export const BlockChoice1 = styled.div`
     display: flex;
+    &:not(:last-child) {
+        margin-right: 77px;
+      }
 `
 export const BlockChoiceSvg = styled.svg`
     margin-right: 24px;
@@ -75,7 +103,7 @@ export const DirectionsListBlock = styled.div`
 export const DirectionsList = styled.ul`
     margin: 0;
     &:not(:last-child) {
-        margin-right: 87px;
+        margin-right: 168px;
       }
 
 `
@@ -142,3 +170,4 @@ export const ApplicationSvg = styled.svg`
     right: 127px;
     bottom: -631px;
 `
+

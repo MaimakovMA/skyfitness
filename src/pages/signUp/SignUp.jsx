@@ -23,17 +23,19 @@ export const SignUp = () => {
 
     const auth = getAuth();
     createUserWithEmailAndPassword(auth, email, password)
-    .then(({user}) => {
+    
+  .then(({user}) => { 
       dispatch(setUser({
           email: user.email,
           id: user.uid,
           token: user.accessToken,
+          password: password,
       }));
       navigate('/login');
   })
   .catch(() => alert ('Неправильное имя пользователя или пароль!'))
   };
-
+  
     return(
     <>
       <S.Wrapper>

@@ -2,11 +2,11 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios  from "axios";
 const BASE_URL = "https://auth-exmple-d8c4f-default-rtdb.europe-west1.firebasedatabase.app/";
 
-export const getCorses = createAsyncThunk(
-  "courses/getCorses",
+export const getWorkouts = createAsyncThunk(
+  "workouts/getWorkouts",
   async (_, thunkAPI) => {
     try {
-      const res = await axios(`${BASE_URL}/courses.json`);
+      const res = await axios(`${BASE_URL}/workouts.json`);
       return res.data;
     } catch (err) {
       console.log(err);
@@ -15,27 +15,27 @@ export const getCorses = createAsyncThunk(
   }
 );
 
-const corsesSlice = createSlice({
-  name: "courses",
+const workoutsSlice = createSlice({
+  name: "workouts",
   initialState: {
-    coursesList: [],
+    workoutsList: [],
     data: [],
     isLoading: false,
   },
   extraReducers: (builder) => {
-    builder.addCase(getCorses.pending, (state) => {
+    builder.addCase(getWorkouts.pending, (state) => {
       state.isLoading = true;
     });
-    builder.addCase(getCorses.fulfilled, (state, action) => {
-      state.coursesList =  Object.keys(action.payload).map((key) => ({
+    builder.addCase(getWorkouts.fulfilled, (state, action) => {
+      state.workoutsList =  Object.keys(action.payload).map((key) => ({
         id: key,
         ...action.payload[key]}));
       state.isLoading = false;
     });
-    builder.addCase(getCorses.rejected, (state) => {
+    builder.addCase(getWorkouts.rejected, (state) => {
       state.isLoading = false;
     });
   },
 });
 
-export default corsesSlice.reducer;
+export default workoutsSlice.reducer;

@@ -20,9 +20,10 @@ export const Login = () => {
           email: user.email,
           id: user.uid,
           token: user.accessToken,
+          password: password,
       }));
       navigate('/');
-  })
+  }) 
     .catch(() => alert ('Неправильное имя пользователя или пароль!'))
   };
   
@@ -44,6 +45,7 @@ export const Login = () => {
                 value={email}
                 placeholder="Почта"
                 onChange={(event) => setEmail(event.target.value)}
+                required
               />
               <S.ModalInput
                 className="password"
@@ -52,6 +54,7 @@ export const Login = () => {
                 value={password}
                 placeholder="Пароль"
                 onChange={(event) => setPassword(event.target.value)}
+                required
               />
               <S.ModalBtnEnter>
               <S.ModalButtonLink onClick={(event) => hendleLogin(event)}>Войти</S.ModalButtonLink>

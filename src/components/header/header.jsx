@@ -1,6 +1,8 @@
-import * as S from './styles'
+import * as S from './styles';
+import { useAuth } from 'hooks/use-auth'; 
 
 export default function Header() {
+  
   return (
     <S.HeaderBlock>
       <img src="./img/logo.svg" alt="logo" />
