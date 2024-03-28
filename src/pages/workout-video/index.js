@@ -26,29 +26,30 @@ export const WorkoutVideoPage = () => {
   const [currentProgress, setCurrentProgress] = useState({
     exercises: [
       {
-        name: "test",
-        quantity: 0
+        name: 'test',
+        quantity: 0,
       },
       {
-        name: "test",
-        quantity: 0
+        name: 'test',
+        quantity: 0,
       },
       {
-        name: "test",
-        quantity: 0
-      }
-    ]
+        name: 'test',
+        quantity: 0,
+      },
+    ],
   })
 
   useEffect(() => {
+    // Берем все уроки и оставляем в Workout одну с нужным id
     getAllWorkouts().then((data) => {
       setWorkout(data[workout_id])
-      console.log(data)
+      console.log(data);
     })
     // Берем прогресс по id урока и id пользователя из базы данных
     getProgress({ id, workout_id }).then((data) => {
       setCurrentProgress(data)
-      console.log(data)
+      console.log(data);
     })
   }, [])
 

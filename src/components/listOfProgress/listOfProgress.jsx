@@ -23,7 +23,8 @@ export default function ListOfProgress({ exercises, currentProgress }) {
               .join('')}
           </span>
           {/* Если прогресс есть и в нём есть упражнение с тем же названием */}
-          {currentProgress.exercises && currentProgress.exercises.find(
+          {currentProgress.exercises &&
+          currentProgress.exercises.find(
             (element) => element.name === item.name,
           ) ? (
             // То ProgressBar считает процент прогресса
@@ -34,10 +35,11 @@ export default function ListOfProgress({ exercises, currentProgress }) {
                   (element) => element.name === item.name,
                 ).quantity,
               )}
+              keyColor={exercises.indexOf(item)}
             />
           ) : (
             // Иначе ProgressBar считает процент с нулем
-            <ProgressBar percentage={result(item.quantity, 0)} />
+            <ProgressBar percentage={result(item.quantity, 0)} keyColor={exercises.indexOf(item)}/>
           )}
         </S.Item>
       ))}
