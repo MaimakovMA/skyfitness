@@ -9,14 +9,12 @@ export const ProgressBarInput = styled.input`
   &::-webkit-slider-runnable-track {
     height: 36px;
     -webkit-appearance: none;
-    color: #13bba4;
   }
 
   &::-webkit-slider-thumb {
     // width: 278px;
     -webkit-appearance: none;
     height: 5px;
-    background: #2e2e2e;
     box-shadow: -800px 0 0 800px #565eef;
   }
 
@@ -41,11 +39,6 @@ export const ProgressBarInput = styled.input`
     border-color: transparent;
     color: transparent;
   }
-
-  // &::-webkit-slider-runnable-track {
-  //   height: 5px;
-  //   background-color: #2E2E2E;
-  // }
 `
 export const Counter = styled.span`
 position: absolute;

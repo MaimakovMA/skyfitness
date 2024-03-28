@@ -38,6 +38,7 @@ export async function getAllWorkouts() {
   return newData
 }
 
+// Функция сохраняет прогресс 
 export async function saveProgress({ id, workout_id, exercises }) {
   const db = getDatabase()
   set(ref(db, 'users/' + id + '/workouts/' + workout_id), {
