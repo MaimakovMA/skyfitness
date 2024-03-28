@@ -8,6 +8,7 @@ import ModalQuestionnaire from '../../components/modalQuestionnaire/modalQuestio
 import ModalProgressSuccess from '../../components/modalProgressSuccess/modalProgressSuccess'
 import { getAllWorkouts, getProgress } from 'api'
 import { useParams } from 'react-router'
+import { getAuth } from 'firebase/auth'
 
 export const WorkoutVideoPage = () => {
   // Состояние с активным модальным окном
@@ -19,7 +20,10 @@ export const WorkoutVideoPage = () => {
   // id активного урока из URL
   let workout_id = useParams().id
   // id пользователя
+  // const auth = getAuth()
+  // const id = auth.currentUser.uid
   const id = 'DrzR1oK1gESplXW6ki4qxUWU7Vm1'
+
   // Состояние с данными для рендера страницы
   const [Workout, setWorkout] = useState()
   // Состояние с прогрессом пользователя на этом уроке
@@ -44,12 +48,12 @@ export const WorkoutVideoPage = () => {
     // Берем все уроки и оставляем в Workout одну с нужным id
     getAllWorkouts().then((data) => {
       setWorkout(data[workout_id])
-      console.log(data);
+      console.log(data)
     })
     // Берем прогресс по id урока и id пользователя из базы данных
     getProgress({ id, workout_id }).then((data) => {
       setCurrentProgress(data)
-      console.log(data);
+      console.log(data)
     })
   }, [])
 
@@ -69,6 +73,7 @@ export const WorkoutVideoPage = () => {
         <BreadCrumbs text={Workout.name} />
         {modalActive === 1 ? (
           <ModalQuestionnaire
+            modalActive={modalActive}
             setModalActive={setModalActive}
             workout={Workout}
           />

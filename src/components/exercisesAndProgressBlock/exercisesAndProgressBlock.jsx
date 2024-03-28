@@ -5,7 +5,7 @@ import ListOfExercisesContainer from '../../components/listOfExercisesContainer/
 export default function ExercisesAndProgressBlock({
   setModalActive,
   exercises,
-  currentProgress
+  currentProgress,
 }) {
   return (
     <S.Block>
@@ -13,7 +13,10 @@ export default function ExercisesAndProgressBlock({
         setModalActive={setModalActive}
         exercises={exercises}
       />
-      <ListOfProgressContainer exercises={exercises} currentProgress={currentProgress}/>
+      <ListOfProgressContainer
+        exercises={exercises}
+        currentProgress={currentProgress}
+      />
     </S.Block>
   )
 }
