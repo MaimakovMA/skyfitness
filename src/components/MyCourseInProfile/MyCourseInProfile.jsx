@@ -1,35 +1,52 @@
-import * as S from './MyCourseInProfile.styles';
-import { useSelector } from "react-redux";
-import {  useParams } from "react-router-dom";
+import { useEffect, useState } from 'react'
+import * as S from './MyCourseInProfile.styles'
+import { useSelector } from 'react-redux'
+import { useParams, useSearchParams } from 'react-router-dom'
+import { getAllCourses } from 'api'
 //import { useGetWorkoutsQuery } from 'store/slices/apiSlice.js';
-
 
 //import { Cards } from '../Cards/Cards.jsx';
 
 function MyCourseInProfile() {
-
-  const { course } = useSelector(({ user }) => user);
-  
-
-  const { id } = useParams();
-  const { workoutsList } = useSelector(({ workouts }) => workouts);
-  console.log(workoutsList)
-  
+  const { course } = useSelector(({ user }) => user)
+  const { id } = useParams()
+  const { workoutsList } = useSelector(({ workouts }) => workouts)
   /*const { data = {} } = useGetWorkoutsQuery({ id });
   console.log(data)*/
 
-    return (
-        <S.HeaderStyleMyProfile>
-          <S.NameCourseUser>Мои Курсы</S.NameCourseUser>
-          {course.map(( item, id ) => {
-              const { name ,image } = item;
+  const [allCourses, setAllCourses] = useState()
+  useEffect(() => {
+    getAllCourses().then((data) => {
+      let arr = []
+      for (let item in data) {
+        arr.push(data[item])
+      }
+      setAllCourses(arr)
+    })
+  }, [])
+
+  const handleClickCourse = (item) => {
+    console.log(`Тренировки по курсу "${item._id}"`)
+    console.log(`В нём будут: ${item.workouts}`)
+  }
+
+  return (
+    <S.HeaderStyleMyProfile>
+      <S.NameCourseUser>Мои Курсы</S.NameCourseUser>
+      <S.TableCourses>
+        {allCourses
+          ? allCourses.map((item, id) => {
+              const { name, image } = item
               return (
-          <S.BlockCard   key={name}>  
-          <S.Card style={{ backgroundImage: `url(${image})`}}>
-            <S.CourseName >{name}</S.CourseName>
-          </S.Card>
-          </S.BlockCard>
-          )})}
+                <S.BlockCard key={name} onClick={() => handleClickCourse(item)}>
+                  <S.Card style={{ backgroundImage: `url(${image})` }}>
+                    <S.CourseName>{name}</S.CourseName>
+                  </S.Card>
+                </S.BlockCard>
+              )
+            })
+          : ''}
+      </S.TableCourses>
     </S.HeaderStyleMyProfile>
   )
 }
