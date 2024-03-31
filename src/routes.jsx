@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom'
 import { Login } from './pages/SignIn/SignIn.jsx'
-import { SignUp } from './pages/signUp/SignUp.jsx'
+import { SignUp } from './pages/SignUp/SignUp.jsx'
 import { ListOfCourses } from './pages/ListOfCourses/ListOfCourses.jsx'
 import { NotFoundPage } from './pages/NotFound/NotFound.jsx'
 import { ChooseCourse } from 'pages/ChooseCourse/chooseCourse.jsx'
