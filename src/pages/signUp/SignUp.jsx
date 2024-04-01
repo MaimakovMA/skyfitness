@@ -4,6 +4,7 @@ import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, sendPasswo
 import { setUser, removeUser } from 'store/slices/userSlice.js';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { saveUser } from 'api.jsx';
 import { Loader } from 'components/FullPageLoader/FullPageLoader.jsx';
 
 export const SignUp = () => {
@@ -43,6 +44,7 @@ export const SignUp = () => {
           token: user.accessToken,
           password: password,
       }));
+      saveUser(user.uid);
       navigate('/login');
   })
   .catch(() => alert ('Неправильное имя пользователя или пароль!'))

@@ -2,22 +2,20 @@ import styled from 'styled-components'
 
 export const ProgressBarInput = styled.input`
   overflow: hidden;
-  background: rgba(86, 94, 239, 0.1);
+  background: ${(props) => (props.background ? props.background : 'white')};
   border-radius: 22px;
-  border: 2px solid #565eef;
+  border: 2px solid ${(props) => (props.color ? props.color : '#565eef')};
 
   &::-webkit-slider-runnable-track {
     height: 36px;
     -webkit-appearance: none;
-    color: #13bba4;
   }
 
   &::-webkit-slider-thumb {
     // width: 278px;
     -webkit-appearance: none;
     height: 5px;
-    background: #2e2e2e;
-    box-shadow: -800px 0 0 800px #565eef;
+    box-shadow: -800px 0 0 800px ${(props) => (props.color ? props.color : '#565eef')};;
   }
 
   -webkit-appearance: none;
@@ -28,10 +26,10 @@ export const ProgressBarInput = styled.input`
 
   &::-webkit-slider-thumb {
     -webkit-appearance: none;
-    border: 2px solid #565eef;
+    border: 2px solid ${(props) => (props.color ? props.color : '#565eef')};;
     height: 12px;
     width: 12px;
-    background: #565eef;
+    background: ${(props) => (props.color ? props.color : '#565eef')};;
     margin-top: -5px;
   }
 
@@ -41,16 +39,11 @@ export const ProgressBarInput = styled.input`
     border-color: transparent;
     color: transparent;
   }
-
-  // &::-webkit-slider-runnable-track {
-  //   height: 5px;
-  //   background-color: #2E2E2E;
-  // }
 `
 export const Counter = styled.span`
-position: absolute;
-color: white;
-padding-top: 7px;
-// padding-left: 10px;
-display: flex;
+  position: absolute;
+  color: white;
+  padding-top: 7px;
+  // padding-left: 10px;
+  display: flex;
 `

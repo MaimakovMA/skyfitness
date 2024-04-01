@@ -1,65 +1,87 @@
-import { getDatabase, ref, set } from "firebase/database";
-const BASE_URL = "https://auth-exmple-d8c4f-default-rtdb.europe-west1.firebasedatabase.app/";
+import {
+  Database,
+  getDatabase,
+  ref,
+  set,
+  child,
+  push,
+  update,
+  get,
+} from '@firebase/database'
+
+const BASE_URL =
+  'https://auth-exmple-d8c4f-default-rtdb.europe-west1.firebasedatabase.app/'
 
 //Запрос на все курсы
 export async function getAllCourses() {
-    const response = await fetch(BASE_URL + "/courses.json", {
-      method: "GET",
-    });
-    if (!response.ok) {
-      throw new Error("Ошибка сервера");
-    }
-    const newData = await response.json();
-  
-    return newData;
+  const response = await fetch(BASE_URL + '/courses.json', {
+    method: 'GET',
+  })
+  if (!response.ok) {
+    throw new Error('Ошибка сервера')
   }
+  const newData = await response.json()
 
-  //Запрос на все тренировки
-  export async function getAllWorkouts() {
-    const response = await fetch(BASE_URL + "/workouts.json", {
-      method: "GET",
-    });
-    if (!response.ok) {
-      throw new Error("Ошибка сервера");
-    }
-    const newData = await response.json();
-  
-    return newData;
-  }
-
-  //import { getDatabase, ref, set } from "firebase/database";
-
-  export async function addCourse(userId, courseId) {
-  const db = getDatabase();
-  const response = await db.ref(`/courses/${courseId}/users`).set(userId)
-
-  const newData = await response.json();
-  
   return newData
 }
 
-/*import { getDatabase, ref, child, push, update } from "firebase/database";
+//Запрос на все тренировки
+export async function getAllWorkouts() {
+  const response = await fetch(BASE_URL + '/workouts.json', {
+    method: 'GET',
+  })
+  if (!response.ok) {
+    throw new Error('Ошибка сервера')
+  }
+  const newData = await response.json()
 
-function writeNewPost(uid, username, picture, title, body) {
-  const db = getDatabase();
+  return newData
+}
 
-  // A post entry.
-  const postData = {
-    author: username,
-    uid: uid,
-    body: body,
-    title: title,
-    starCount: 0,
-    authorPic: picture
-  };
+// Функция сохраняет прогресс
+export async function saveProgress({ id, workout_id, exercises }) {
+  const db = getDatabase()
+  set(ref(db, 'users/' + id + '/workouts/' + workout_id), {
+    workout_id,
+    exercises,
+  })
+}
 
-  // Get a key for a new Post.
-  const newPostKey = push(child(ref(db), 'posts')).key;
+// Функция принимает данные о прогрессе
+export async function getProgress({ id, workout_id }) {
+  // Подключаемся к базе
+  const bdRef = ref(getDatabase())
+  // Отправляем запрос
+  let response = await get(child(bdRef, `users/${id}/workouts/${workout_id}`))
+    .then((snapshot) => {
+      if (snapshot.exists()) {
+        return snapshot.val()
+      } else {
+        return 'snapshot dont exist'
+      }
+    })
+    .catch((error) => {
+      console.error(error)
+    })
 
-  // Write the new post's data simultaneously in the posts list and the user's post list.
-  const updates = {};
-  updates['/posts/' + newPostKey] = postData;
-  updates['/user-posts/' + uid + '/' + newPostKey] = postData;
+  const result = await response
+  return result
+}
 
-  return update(ref(db), updates);
-}*/
+// Функция сохраняет пользователя в базе
+export async function saveUser(id) {
+  console.log(id)
+  const db = getDatabase()
+  set(ref(db, 'users/' + id), {
+    user_id,
+    courses: 0,
+  })
+}
+
+export async function saveCourseToUser({id, course}) {
+  console.log(course)
+  const db = getDatabase()
+  set(ref(db, 'users/' + id + '/courses/' + course._id), {
+    course,
+  })
+}

@@ -19,11 +19,10 @@ export const ChooseCourse = ({item}) => {
       navigate('/login')
     }
 
-    const addToCart = () => {
-        dispatch(addItemToCourse(data));
-        addCourse()
-        navigate('/profile')
-      };
+  const addToCart = () => {
+    dispatch(addItemToCourse(data))
+    navigate('/profile')
+  }
 
     return  !data ?  ( 
         <Loader />

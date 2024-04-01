@@ -5,4 +5,5 @@ display: flex;
 justify-content: space-between;
 margin-top: 75px;
 margin-bottom: 94px;
+gap: 30px;
 `

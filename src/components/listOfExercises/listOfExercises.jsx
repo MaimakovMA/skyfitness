@@ -1,10 +1,10 @@
 import * as S from './styles'
 
-export default function ListOfExercises({ arr }) {
+export default function ListOfExercises({ exercises }) {
   return (
     <S.List>
-      {arr.map((item) => (
-        <S.Item key={arr.indexOf(item)}>{item}</S.Item>
+      {exercises.map((item) => (
+        <S.Item key={exercises.indexOf(item)}>{item.name}</S.Item>
       ))}
     </S.List>
   )
