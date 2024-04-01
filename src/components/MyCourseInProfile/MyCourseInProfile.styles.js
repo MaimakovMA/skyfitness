@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
+import styled from 'styled-components'
+import { NavLink } from 'react-router-dom'
 
 export const HeaderStyleMyProfile = styled.div`
   display: flex;
@@ -19,6 +19,13 @@ export const HeaderStyleMyProfile = styled.div`
 //   border-radius: 30px;
 //   box-shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
 // `
+
+export const TableCourses = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  row-gap: 30px;
+`
 export const NameCourseUser = styled.p`
   color: #000;
   font-size: 48px;
@@ -183,7 +190,7 @@ export const Card = styled.div`
 export const CourseName = styled.h2`
   color: #000;
   font-variant-numeric: lining-nums proportional-nums;
-  font-family: "StratosSkyeng", sans-serif;
+  font-family: 'StratosSkyeng', sans-serif;
   font-size: 36px;
   font-style: normal;
   font-weight: 600;

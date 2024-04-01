@@ -4,6 +4,7 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { setUser } from 'store/slices/userSlice.js';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { saveUser } from 'api.jsx';
 
 export const SignUp = () => {
 
@@ -11,7 +12,8 @@ export const SignUp = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const dispatch = useDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
+
 
   const hendleRegister = (event) => {
     event.preventDefault()
@@ -31,6 +33,7 @@ export const SignUp = () => {
           token: user.accessToken,
           password: password,
       }));
+      saveUser(user.uid);
       navigate('/login');
   })
   .catch(() => alert ('Неправильное имя пользователя или пароль!'))
