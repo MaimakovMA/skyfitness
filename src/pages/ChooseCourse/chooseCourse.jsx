@@ -5,26 +5,22 @@ import { useDispatch } from 'react-redux'
 import { useAuth } from 'hooks/use-auth'
 import { addItemToCourse } from 'store/slices/userSlice.js'
 
-export const ChooseCourse = ({item}) => {
-    
-    const { id } = useParams();
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
+export const ChooseCourse = ({ item }) => {
+  const { id } = useParams()
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const { isAuth } = useAuth()
+
+  const { data } = useGetCorsesQuery({ id })
+
+  const onClickLogin = () => {
+    const { id } = useParams()
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
     const { isAuth } = useAuth()
-    
-    const { data } = useGetCorsesQuery({ id });
-    
-    const onClickLogin = () => {
-      
-// export const ChooseCourse = ({ item }) => {
-//   const { id } = useParams()
-//   const navigate = useNavigate()
-//   const dispatch = useDispatch()
-//   const { isAuth } = useAuth()
 
-//   const { data } = useGetCorsesQuery({ id })
+    const { data } = useGetCorsesQuery({ id })
 
-//   const onClickLogin = () => {
     navigate('/login')
   }
 
