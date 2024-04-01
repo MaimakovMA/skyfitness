@@ -5,7 +5,7 @@ import { NotFoundPage } from './pages/NotFound/NotFound.jsx'
 import { ChooseCourse } from 'pages/ChooseCourse/chooseCourse.jsx'
 import Profile from 'pages/Profile/index.jsx'
 import { WorkoutVideoPage } from 'pages/workout-video/index.js'
-import { SignUp } from 'pages/signUp/SignUp.jsx'
+import { SignUp } from 'pages/SignUp/SignUp.jsx'
 
 export const AppRoutes = () => {
   return (
