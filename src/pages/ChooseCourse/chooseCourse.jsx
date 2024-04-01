@@ -15,15 +15,16 @@ export const ChooseCourse = ({item}) => {
     const { data } = useGetCorsesQuery({ id });
     
     const onClickLogin = () => {
-export const ChooseCourse = ({ item }) => {
-  const { id } = useParams()
-  const navigate = useNavigate()
-  const dispatch = useDispatch()
-  const { isAuth } = useAuth()
+      
+// export const ChooseCourse = ({ item }) => {
+//   const { id } = useParams()
+//   const navigate = useNavigate()
+//   const dispatch = useDispatch()
+//   const { isAuth } = useAuth()
 
-  const { data } = useGetCorsesQuery({ id })
+//   const { data } = useGetCorsesQuery({ id })
 
-  const onClickLogin = () => {
+//   const onClickLogin = () => {
     navigate('/login')
   }
 
