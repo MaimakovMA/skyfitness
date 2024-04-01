@@ -4,9 +4,11 @@ import { SignUp } from './pages/SignUp/SignUp.jsx'
 import { ListOfCourses } from './pages/ListOfCourses/ListOfCourses.jsx'
 import { NotFoundPage } from './pages/NotFound/NotFound.jsx'
 import { ChooseCourse } from 'pages/ChooseCourse/chooseCourse.jsx'
-import Profile from 'pages/Profile/index.jsx'
-import { WorkoutVideoPage } from 'pages/workout-video/index.js'
-import { SignUp } from 'pages/signUp/SignUp.jsx'
+import Profile from "pages/Profile/index.jsx";
+import { WorkoutVideoPage } from "pages/workout-video/index.js";
+import { useSelector } from "react-redux";
+import { selectUsers } from "store/slices/userSlice.js";
+
 
 export const AppRoutes = () => {
 
