@@ -1,12 +1,26 @@
 import * as S from './Heading.styles.js';
-import {useDispatch} from 'react-redux'
+import {useDispatch} from 'react-redux';
 import { useAuth } from 'hooks/use-auth';
 import {removeUser} from 'store/slices/userSlice';
+import { getAuth, signOut } from "firebase/auth";
+import { useNavigate } from 'react-router-dom';
 
 export const Heading = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { isAuth } = useAuth();
 
-  const { isAuth } = useAuth()
+const hendleSignOut = () => {
+    const auth = getAuth();
+    if(confirm('Вы уверенны что хотите выйти?')) {
+      signOut(auth).then(() => {
+      dispatch(removeUser());
+    }).catch((error) => {
+      console.log(error);
+    })
+      navigate('/login');
+  }
+};
 
     return (
         <>
@@ -15,7 +29,7 @@ export const Heading = () => {
             {isAuth ? (
             <>
             <S.LinkPersonalAccount to={`/profile`}>Мой профиль</S.LinkPersonalAccount >
-            <S.LogoButton onClick={()=> dispatch(removeUser())}>Выйти</S.LogoButton>
+            <S.LogoButton onClick={hendleSignOut}>Выйти</S.LogoButton>
             </>
             ) : (
             <S.LogoButton to={`/login`}>Войти</S.LogoButton>

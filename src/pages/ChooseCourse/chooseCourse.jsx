@@ -4,6 +4,7 @@ import { useGetCorsesQuery } from 'store/slices/apiSlice.js';
 import { useDispatch } from "react-redux";
 import { useAuth } from 'hooks/use-auth';
 import { addItemToCourse } from 'store/slices/userSlice.js';
+import { Loader } from 'components/FullPageLoader/FullPageLoader.styles.js';
 
 export const ChooseCourse = ({item}) => {
     
@@ -15,16 +16,17 @@ export const ChooseCourse = ({item}) => {
     const { data } = useGetCorsesQuery({ id });
     
     const onClickLogin = () => {
-    navigate('/login')
+      navigate('/login')
     }
 
     const addToCart = () => {
         dispatch(addItemToCourse(data));
+        addCourse()
         navigate('/profile')
       };
 
     return  !data ?  ( 
-        <S.Section>Loading...</S.Section>
+        <Loader />
     ) : ( 
         <S.Conteiner>
             <S.LogoBox to="/">
