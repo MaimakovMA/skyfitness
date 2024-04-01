@@ -1,6 +1,7 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
-export const HeaderBlock = styled.header`
+export const HeaderBlock = styled(Link)`
   display: flex;
   justify-content: space-between;
   align-items: center;

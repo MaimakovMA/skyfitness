@@ -1,19 +1,30 @@
 import * as S from './signUp.slyles.js';
 import { useDispatch } from 'react-redux';
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { setUser } from 'store/slices/userSlice.js';
+import { getAuth, createUserWithEmailAndPassword, onAuthStateChanged, sendPasswordResetEmail } from "firebase/auth";
+import { setUser, removeUser } from 'store/slices/userSlice.js';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { saveUser } from 'api.jsx';
+import { Loader } from 'components/FullPageLoader/FullPageLoader.jsx';
 
 export const SignUp = () => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isLoading, setisLoading] = useState(true);
   const [confirmPassword, setConfirmPassword] = useState('');
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
+  const auth = getAuth();
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      dispatch(setUser({ email: user.email, id: user.uid, password: user.password }));
+    } else {
+      dispatch(removeUser());
+    }
+    if (isLoading) { setisLoading(false) };
+});
 
   const hendleRegister = (event) => {
     event.preventDefault()
@@ -39,7 +50,8 @@ export const SignUp = () => {
   .catch(() => alert ('Неправильное имя пользователя или пароль!'))
   };
   
-    return(
+    return isLoading ? (
+      <Loader /> ) : (
     <>
       <S.Wrapper>
         <S.ContainerEnter >
