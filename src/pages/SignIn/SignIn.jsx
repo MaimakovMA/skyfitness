@@ -1,15 +1,27 @@
 import * as S from './signIn.styles.js';
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { setUser } from 'store/slices/userSlice.js';
+import { setUser, removeUser } from 'store/slices/userSlice.js';
 import { useNavigate } from 'react-router-dom';
+import { Loader } from 'components/FullPageLoader/FullPageLoader.jsx';
 
 export const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isLoading, setisLoading] = useState(true);
   const dispatch = useDispatch();
   const navigate = useNavigate()
+
+const auth = getAuth();
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      dispatch(setUser({ email: user.email, id: user.uid, password: user.password }));
+    } else {
+      dispatch(removeUser());
+    }
+    if (isLoading) { setisLoading(false) };
+});
 
   const hendleLogin = (event) => {
     event.preventDefault()
@@ -26,8 +38,16 @@ export const Login = () => {
   }) 
     .catch(() => alert ('Неправильное имя пользователя или пароль!'))
   };
+
+  const hendleResetPassword = () => {
+    const auth = getAuth();
+    const email = prompt('Введите email еще раз');
+    sendPasswordResetEmail(auth, email);
+    alert('Вам отправленно письмо, на адрес вашей эл.почты');
+  }
   
-    return(
+    return  isLoading ? (
+      <Loader /> ) : (
     <>
       <S.Wrapper>
         <S.ContainerEnter>
@@ -62,6 +82,7 @@ export const Login = () => {
               <S.ModalBtnSignUp>
               <S.ModalButtonLink to="/SignUp">Зарегистрироваться</S.ModalButtonLink>
               </S.ModalBtnSignUp>
+              <S.ResetPassword onClick={(event) => hendleResetPassword(event)}>Забыли пароль</S.ResetPassword>
             </S.ModalFormLogin>
           </S.ModalBlock>
         </S.ContainerEnter>

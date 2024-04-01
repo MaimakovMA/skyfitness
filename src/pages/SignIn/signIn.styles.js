@@ -211,3 +211,18 @@ export const ErrorMessage = styled.div`
     font-size: 18px;
     line-height: 24px;
 `
+
+export const ResetPassword = styled(Link)`
+    padding-top: 20px;
+    color: #580EA2;
+    text-decoration: none;
+    font-family: 'StratosSkyeng', sans-serif;
+    cursor: pointer;
+    font-weight: 400;
+      font-size: 20px;
+      line-height: 24px;
+  &: hover {
+    color: red;
+    text-decoration: underline;
+  }
+`
