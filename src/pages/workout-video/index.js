@@ -20,9 +20,9 @@ export const WorkoutVideoPage = () => {
   // id активного урока из URL
   let workout_id = useParams().id
   // id пользователя
-  // const auth = getAuth()
-  // const id = auth.currentUser.uid
-  const id = 'DrzR1oK1gESplXW6ki4qxUWU7Vm1'
+  const auth = getAuth()
+  const id = auth.currentUser.uid
+  // const id = 'DrzR1oK1gESplXW6ki4qxUWU7Vm1'
 
   // Состояние с данными для рендера страницы
   const [Workout, setWorkout] = useState()

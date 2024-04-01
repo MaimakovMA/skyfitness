@@ -67,3 +67,21 @@ export async function getProgress({ id, workout_id }) {
   const result = await response
   return result
 }
+
+// Функция сохраняет пользователя в базе
+export async function saveUser(id) {
+  console.log(id)
+  const db = getDatabase()
+  set(ref(db, 'users/' + id), {
+    user_id,
+    courses: 0,
+  })
+}
+
+export async function saveCourseToUser({id, course}) {
+  console.log(course)
+  const db = getDatabase()
+  set(ref(db, 'users/' + id + '/courses/' + course._id), {
+    course,
+  })
+}
