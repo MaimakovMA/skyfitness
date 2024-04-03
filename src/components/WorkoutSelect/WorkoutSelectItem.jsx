@@ -26,34 +26,26 @@ export const WorkoutSelectItem = ({
         sumProgress += Number(progress[item].quantity)
       }
     }
-    return task === sumProgress
+    if (task === 0) {
+      return false
+    } else {
+      return task === sumProgress
+    }
   }
-
-  // const userProg = useSelector(state => state.progress.userProgressAll.userProgressAll.workoutsProgress[id - 1][0]);
-
-  // const [progress, setProgress] = useState(userProg);
-  // const [exe, setExe] = useState(exercise);
-
-  // const allExeChecked = () => {
-  //     for (const ex of exe) {
-  //         const matchProgress = progress.find(item => item.training === ex.name);
-  //         if (!matchProgress || matchProgress.progress < ex.repeats) {
-  //             return false
-  //         }
-  //     }
-  //     return true
-  // }
 
   return (
     <S.SelectItem $isFinished={result()}>
-      {name}
-      {result() ? (
-        <S.SelectItemCheckboxImg>
-          <use xlinkHref="/icons/sprite.svg#icon-complete" />
-        </S.SelectItemCheckboxImg>
-      ) : (
-        ''
-      )}
+      <S.TitleOfworkoutBlock>
+        {name.split('/')[0]}
+        {result() ? (
+          <S.SelectItemCheckboxImg src="/img/icon-complete.svg" />
+        ) : (
+          ''
+        )}
+      </S.TitleOfworkoutBlock>
+      <S.DescOfworkoutBlock>
+        {name.split('/').splice(1, name.split('/').length).join(' / ')}
+      </S.DescOfworkoutBlock>
       <S.SelectItemType>{type}</S.SelectItemType>
     </S.SelectItem>
   )

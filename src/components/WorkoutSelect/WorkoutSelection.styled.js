@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const SelectContainer = styled.div`
   position: fixed;
@@ -12,10 +12,10 @@ export const SelectContainer = styled.div`
   align-items: center;
   justify-content: center;
   text-decoration: none;
-`;
+`
 
 export const SelectWrapper = styled.div`
-  width: 444px;
+  width: fit-content;
   max-height: 600px;
   border-radius: 12px;
   background: #ffffff;
@@ -25,7 +25,8 @@ export const SelectWrapper = styled.div`
   justify-content: center;
   align-items: center;
   position: relative;
-`;
+  text-decoration: none;
+`
 
 export const SelectCloseIconSvg = styled.svg`
   width: 20px;
@@ -34,14 +35,14 @@ export const SelectCloseIconSvg = styled.svg`
   top: 15px;
   left: 410px;
   cursor: pointer;
-`;
+`
 
 export const SelectHeader = styled.div`
   font-size: 32px;
   margin-bottom: 40px;
   color: #000000;
   text-align: center;
-`;
+`
 
 export const SelectList = styled.div`
   display: flex;
@@ -54,6 +55,7 @@ export const SelectList = styled.div`
   overflow-y: auto;
   -ms-overflow-style: none; /* IE и Edge */
   scrollbar-width: none; /* Firefox */
+  text-decoration: none;
 
   &::-webkit-scrollbar {
     width: 5px;
@@ -67,7 +69,7 @@ export const SelectList = styled.div`
     background: rgba(0, 0, 0, 0.15);
     border-radius: 10px;
   }
-`;
+`
 
 export const SelectItem = styled.div`
   display: flex;
@@ -78,28 +80,36 @@ export const SelectItem = styled.div`
   width: 278px;
   border-radius: 26px;
   border: 1px solid
-    ${({ $isFinished }) => ($isFinished ? "#06B16E" : "#000000")};
+    ${({ $isFinished }) => ($isFinished ? '#06B16E' : '#000000')};
   font-size: 20px;
   letter-spacing: -0.05px;
   text-align: center;
   padding: 12px 10px 17px;
   cursor: pointer;
   position: relative;
-  color: ${({ $isFinished }) => ($isFinished ? "#06B16E" : "#000000")};
+  color: ${({ $isFinished }) => ($isFinished ? '#06B16E' : '#000000')};
   text-decoration: none;
-`;
+`
 
-export const SelectItemCheckboxImg = styled.svg`
+export const SelectItemCheckboxImg = styled.img`
   width: 28px;
   height: 26px;
-  position: absolute;
   left: 242px;
   top: 12px;
-`;
+`
 
 export const SelectItemType = styled.span`
   font-size: 16px;
   line-height: 18px;
   letter-spacing: 0.016px;
   margin-top: 6px;
-`;
+`
+
+export const TitleOfworkoutBlock = styled.div`
+  font-size: 25px;
+  margin-bottom: 5px;
+  display: flex;
+  gap: 5px;
+`
+
+export const DescOfworkoutBlock = styled.div``

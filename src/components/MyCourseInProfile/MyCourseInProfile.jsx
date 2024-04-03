@@ -23,8 +23,9 @@ function MyCourseInProfile() {
     setModalactive(item)
   }
 
+
   return (
-    <S.HeaderStyleMyProfile>
+    <S.HeaderStyleMyProfile onClick={() => modalActive ? setModalactive(false) : ''}>
       <S.NameCourseUser>Мои Курсы</S.NameCourseUser>
       <S.TableCourses>
         {modalActive ? <WorkoutSelect workouts_id={modalActive.workouts} /> : ''}
