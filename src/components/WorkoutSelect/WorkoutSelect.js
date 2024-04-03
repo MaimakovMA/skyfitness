@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import * as S from "./WorkoutSelection.styled";
 import { useSelector } from "react-redux";
-import { useState } from "react";
 import { WorkoutSelectItem } from "./WorkoutSelectItem";
 
 export default function WorkoutSelect({
@@ -16,7 +15,6 @@ export default function WorkoutSelect({
     </Link>
   ));
 
-  
   return (
     <S.SelectContainer>
       <S.SelectWrapper>

@@ -1,6 +1,6 @@
 import * as S from './signIn.styles.js';
 import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setUser, removeUser } from 'store/slices/userSlice.js';
 import { useNavigate } from 'react-router-dom';
@@ -11,20 +11,23 @@ export const Login = () => {
   const [password, setPassword] = useState('');
   const [isLoading, setisLoading] = useState(true);
   const dispatch = useDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-const auth = getAuth();
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      dispatch(setUser({ email: user.email, id: user.uid, password: user.password }));
-    } else {
-      dispatch(removeUser());
-    }
-    if (isLoading) { setisLoading(false) };
-});
+  useEffect (() => {
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        dispatch(setUser({ email: user.email, id: user.uid, password: user.password }));
+      } else {
+        dispatch(removeUser());
+      }
+      if (isLoading) { setisLoading(false) };
+  });
+  },[])
+
 
   const hendleLogin = (event) => {
-    event.preventDefault()
+    event.preventDefault();
     const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
     .then(({user}) => {

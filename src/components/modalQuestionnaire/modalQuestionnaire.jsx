@@ -1,8 +1,8 @@
-import { useState } from 'react'
-import * as S from './styles.js'
-import { useParams } from 'react-router-dom'
-import { getAuth } from 'firebase/auth'
-import { saveProgress } from 'api.jsx'
+import { useState } from 'react';
+import * as S from './styles.js';
+import { useParams } from 'react-router-dom';
+import { getAuth } from 'firebase/auth';
+import { saveProgress } from 'api.jsx';
 
 export default function ModalQuestionnaire({
   modalActive,

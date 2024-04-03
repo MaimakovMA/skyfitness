@@ -1,7 +1,7 @@
 import * as S from './signUp.slyles.js';
 import { useDispatch } from 'react-redux';
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { setUser, removeUser } from 'store/slices/userSlice.js';
+import { setUser } from 'store/slices/userSlice.js';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { saveUser } from 'api.jsx';
@@ -12,10 +12,10 @@ export const SignUp = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const dispatch = useDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const hendleRegister = (event) => {
-    event.preventDefault()
+    event.preventDefault();
 
     if (password !== confirmPassword) {
       alert('Пароли не совпадают!');
@@ -24,8 +24,7 @@ export const SignUp = () => {
 
     const auth = getAuth();
     createUserWithEmailAndPassword(auth, email, password)
-    
-  .then(({user}) => { 
+    .then(({user}) => { 
       dispatch(setUser({
           email: user.email,
           id: user.uid,

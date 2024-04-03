@@ -1,18 +1,8 @@
-import { useEffect, useState } from 'react'
-import * as S from './MyCourseInProfile.styles'
-import { useSelector } from 'react-redux'
-import { useParams, useSearchParams } from 'react-router-dom'
-import { getAllCourses } from 'api'
-//import { useGetWorkoutsQuery } from 'store/slices/apiSlice.js';
-
-//import { Cards } from '../Cards/Cards.jsx';
+import { useEffect, useState } from 'react';
+import * as S from './MyCourseInProfile.styles';
+import { getAllCourses } from 'api';
 
 function MyCourseInProfile() {
-  const { course } = useSelector(({ user }) => user)
-  const { id } = useParams()
-  const { workoutsList } = useSelector(({ workouts }) => workouts)
-  /*const { data = {} } = useGetWorkoutsQuery({ id });
-  console.log(data)*/
 
   const [allCourses, setAllCourses] = useState()
   useEffect(() => {
@@ -35,7 +25,7 @@ function MyCourseInProfile() {
       <S.NameCourseUser>Мои Курсы</S.NameCourseUser>
       <S.TableCourses>
         {allCourses
-          ? allCourses.map((item, id) => {
+          ? allCourses.map((item) => {
               const { name, image } = item
               return (
                 <S.BlockCard key={name} onClick={() => handleClickCourse(item)}>

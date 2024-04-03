@@ -1,11 +1,8 @@
 import {
-  Database,
   getDatabase,
   ref,
   set,
   child,
-  push,
-  update,
   get,
 } from '@firebase/database'
 
@@ -18,11 +15,11 @@ export async function getAllCourses() {
     method: 'GET',
   })
   if (!response.ok) {
-    throw new Error('Ошибка сервера')
+    throw new Error('Ошибка сервера');
   }
-  const newData = await response.json()
+  const newData = await response.json();
 
-  return newData
+  return newData;
 }
 
 //Запрос на все тренировки
@@ -31,11 +28,11 @@ export async function getAllWorkouts() {
     method: 'GET',
   })
   if (!response.ok) {
-    throw new Error('Ошибка сервера')
+    throw new Error('Ошибка сервера');
   }
-  const newData = await response.json()
+  const newData = await response.json();
 
-  return newData
+  return newData;
 }
 
 // Функция сохраняет прогресс
@@ -50,28 +47,28 @@ export async function saveProgress({ id, workout_id, exercises }) {
 // Функция принимает данные о прогрессе
 export async function getProgress({ id, workout_id }) {
   // Подключаемся к базе
-  const bdRef = ref(getDatabase())
+  const bdRef = ref(getDatabase());
   // Отправляем запрос
   let response = await get(child(bdRef, `users/${id}/workouts/${workout_id}`))
     .then((snapshot) => {
       if (snapshot.exists()) {
-        return snapshot.val()
+        return snapshot.val();
       } else {
-        return 'snapshot dont exist'
+        return 'snapshot dont exist';
       }
     })
     .catch((error) => {
-      console.error(error)
+      console.error(error);
     })
 
-  const result = await response
-  return result
+  const result = await response;
+  return result;
 }
 
 // Функция сохраняет пользователя в базе
 export async function saveUser(id) {
-  console.log(id)
-  const db = getDatabase()
+  console.log(id);
+  const db = getDatabase();
   set(ref(db, 'users/' + id), {
     user_id,
     courses: 0,
@@ -79,8 +76,8 @@ export async function saveUser(id) {
 }
 
 export async function saveCourseToUser({id, course}) {
-  console.log(course)
-  const db = getDatabase()
+  console.log(course);
+  const db = getDatabase();
   set(ref(db, 'users/' + id + '/courses/' + course._id), {
     course,
   })

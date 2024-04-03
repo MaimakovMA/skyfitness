@@ -7,14 +7,8 @@ import { ChooseCourse } from 'pages/ChooseCourse/chooseCourse.jsx';
 import Profile from "pages/Profile/index.jsx";
 import { WorkoutVideoPage } from "pages/workout-video/index.js";
 import { ProtectedRoute } from 'ProtectedRoute.jsx';
-//import { useSelector } from "react-redux";
-//import { selectUsers } from "store/slices/userSlice.js";
-
-
 
 export const AppRoutes = () => {
-
-    //const user = useSelector(selectUsers);
 
 return  (  
     <Routes>

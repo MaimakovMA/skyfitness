@@ -22,20 +22,20 @@ function MyProfile() {
     }
 
     useEffect(() => {
-      window.addEventListener('keydown', handleEscape)
+      window.addEventListener('keydown', handleEscape);
       return () => {
-        window.removeEventListener('keydown', handleEscape)
+        window.removeEventListener('keydown', handleEscape);
       }
     }, [isEditing])
   
     const handleLogin = () => {
-      setVisibleLogin(!visibleLogin)
-      setIsEditing(true)
+      setVisibleLogin(!visibleLogin);
+      setIsEditing(true);
     }
   
     const handlePassword = () => {
-      setIsEditing(true)
-      setVisiblePas(!visiblePas)
+      setIsEditing(true);
+      setVisiblePas(!visiblePas);
     }
   
 return (

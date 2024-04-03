@@ -1,17 +1,14 @@
 import * as S from './ChooseCourse.Styles.js';
 import { useNavigate, useParams } from "react-router-dom";
 import { useGetCorsesQuery } from 'store/slices/apiSlice.js';
-import { useDispatch } from "react-redux";
 import { useAuth } from 'hooks/use-auth';
-import { addItemToCourse } from 'store/slices/userSlice.js';
 import { Loader } from 'components/FullPageLoader/FullPageLoader.styles.js';
 
 export const ChooseCourse = () => {
     
     const { id } = useParams();
     const navigate = useNavigate();
-    const dispatch = useDispatch();
-    const { isAuth } = useAuth()
+    const { isAuth } = useAuth();
     
     const { data } = useGetCorsesQuery({ id });
     
@@ -19,10 +16,9 @@ export const ChooseCourse = () => {
       navigate('/login');
     }
 
-  const addToCart = () => {
-    dispatch(addItemToCourse(data))
+    const addToCart = () => {
     navigate('/profile');
-  }
+    }
 
     return  !data ?  ( 
         <Loader />

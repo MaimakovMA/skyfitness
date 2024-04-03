@@ -4,6 +4,7 @@ import { useAuth } from 'hooks/use-auth';
 import {removeUser} from 'store/slices/userSlice';
 import { getAuth, signOut } from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
+import { UserLoggedIn } from 'hooks/UserLoggedIn.jsx';
 
 export const Heading = () => {
   const dispatch = useDispatch();
@@ -21,6 +22,8 @@ const hendleSignOut = () => {
       navigate('/login');
   }
 };
+
+UserLoggedIn();
 
     return (
         <>
