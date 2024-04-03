@@ -1,25 +1,14 @@
-
-
-import { useEffect, useState } from 'react'
-import CorrectLogin from '../../pages/CorrectLogin/CorrectLogin'
-import CorrectPassword from '../../pages/CorrectPassword/Correct'
-import * as S from './MyProfile.styles'
-import { getAuth, updateEmail, updatePassword } from 'firebase/auth'
-import { useDispatch } from 'react-redux'
-
-
+import { useEffect, useState } from 'react';
+import CorrectLogin from '../../pages/CorrectLogin/CorrectLogin';
+import CorrectPassword from '../../pages/CorrectPassword/Correct';
+import * as S from './MyProfile.styles';
 
 function MyProfile() {
   
-    const dispatch = useDispatch()
     const userName = localStorage.getItem('email');
-    const userPassword = localStorage.getItem('password');
-    const auth = getAuth()
-    const [visibleLogin, setVisibleLogin] = useState(false)
-    const [visiblePas, setVisiblePas] = useState(false)
-    const [newEmail, setNewEmail] = useState('')
-    const [newPassword, setNewPassword] = useState('')
-    const [isEditing, setIsEditing] = useState(false)
+    const [visibleLogin, setVisibleLogin] = useState(false);
+    const [visiblePas, setVisiblePas] = useState(false);
+    const [isEditing, setIsEditing] = useState(false);
     
     const handleEscape = (event) => {
       if (event.key === 'Escape') {
@@ -31,6 +20,7 @@ function MyProfile() {
         }
       }
     }
+
     useEffect(() => {
       window.addEventListener('keydown', handleEscape)
       return () => {
@@ -40,42 +30,22 @@ function MyProfile() {
   
     const handleLogin = () => {
       setVisibleLogin(!visibleLogin)
-      /*setIsEditing(true)
-      
-      const user = auth.currentUser
-      updateEmail(user, newEmail)
-        .then(() => {
-          localStorage.setItem('userEmail', newEmail)
-          dispatch(setEmail({ email: newEmail }))
-        })
-        .catch(() => {
-          alert('Некорректный логин')
-        })*/
+      setIsEditing(true)
     }
   
     const handlePassword = () => {
       setIsEditing(true)
       setVisiblePas(!visiblePas)
-      const user = auth.currentUser
-  
-      updatePassword(user, newPassword)
-        .then(() => {
-          console.log('ready')
-        })
-        .catch(() => {
-          alert('Некорректный пароль')
-        })
     }
   
 return (
 
     <S.HeaderStyleMyProfile>
     <S.NamePages>Мой профиль</S.NamePages>
-    <S.LoginPassName>Логин:{userName}</S.LoginPassName>
-    <S.LoginPassNameWithPadding>Пароль: {userPassword}</S.LoginPassNameWithPadding>
-
+    <S.LoginPassName>Логин: {userName}</S.LoginPassName>
+    <S.LoginPassNameWithPadding>Пароль: ******</S.LoginPassNameWithPadding>
     {visibleLogin ? (
-      <CorrectLogin onClick={handleLogin} />
+      <CorrectLogin onClick={handleLogin} setVisibleLogin={setVisibleLogin} />
     ) : (
       <S.ProfileButton onClick={handleLogin}>
         Редактировать логин
@@ -83,7 +53,7 @@ return (
     )}
     <S.ContainerWithButtom>
       {visiblePas ? (
-        <CorrectPassword onClick={handlePassword} setNew={setNewPassword} />
+        <CorrectPassword onClick={handlePassword} setVisiblePas={setVisiblePas} />
       ) : (
         <S.ProfileButton onClick={handlePassword}>
           Редактировать пароль
@@ -91,7 +61,7 @@ return (
       )}
     </S.ContainerWithButtom>
   </S.HeaderStyleMyProfile>
-)
+  )
 }
 
 export default MyProfile

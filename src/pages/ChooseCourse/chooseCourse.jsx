@@ -6,7 +6,7 @@ import { useAuth } from 'hooks/use-auth';
 import { addItemToCourse } from 'store/slices/userSlice.js';
 import { Loader } from 'components/FullPageLoader/FullPageLoader.styles.js';
 
-export const ChooseCourse = ({item}) => {
+export const ChooseCourse = () => {
     
     const { id } = useParams();
     const navigate = useNavigate();
@@ -16,12 +16,12 @@ export const ChooseCourse = ({item}) => {
     const { data } = useGetCorsesQuery({ id });
     
     const onClickLogin = () => {
-      navigate('/login')
+      navigate('/login');
     }
 
   const addToCart = () => {
     dispatch(addItemToCourse(data))
-    navigate('/profile')
+    navigate('/profile');
   }
 
     return  !data ?  ( 

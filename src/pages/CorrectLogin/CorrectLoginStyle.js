@@ -1,4 +1,5 @@
-import { styled } from 'styled-components'
+import { Link } from 'react-router-dom';
+import { styled } from 'styled-components';
 
 export const PageContainer = styled.div`
   max-width: 100%;
@@ -140,4 +141,59 @@ export const Error = styled.div`
   line-height: 24px;
   margin-top: 20px;
   text-align: left;
+`
+
+export const ModalBtnEnter = styled.button`
+    width: 278px;
+    height: 62px;
+    background-color: #580EA2;
+    border-radius: 6px;
+    margin-left: 4px;
+    border: none;
+    margin-top: 30px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    & a {
+      width: 100%;
+      height: 100%;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 18px;
+      line-height: 24px;
+      letter-spacing: -0.05px;
+      color: #FFFFFF;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+      -ms-flex-align: center;
+      align-items: center;
+      -webkit-box-pack: center;
+      -ms-flex-pack: center;
+      justify-content: center;
+    }
+    &:hover {
+      background-color: #3F007D;
+    }
+    &:active {
+      background-color: #271A58;
+    }  
+`
+
+export const ModalButtonLink = styled(Link)`
+    text-decoration: none;
+    font-family: 'StratosSkyeng', sans-serif;
+    cursor: pointer;
+    &:visited {
+        text-decoration: none;
+        font-family: 'StratosSkyeng', sans-serif;
+        cursor: pointer;
+    }
 `

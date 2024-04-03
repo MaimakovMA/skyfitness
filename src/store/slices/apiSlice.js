@@ -11,14 +11,7 @@ export const apiSlice = createApi({
       query: ({ id }) => `/courses/${id}.json`,
       providesTags: ["courses"],
     }),
-    tagTypes: ["workouts"],
-   endpoints: (builder) => ({
-    getWorkouts: builder.query({
-      query: ({ id }) => `/workouts/${id}.json`,
-      providesTags: ["workouts"],
     }),
-  }),
-    }),
-  })
+  });
  
 export const { useGetCorsesQuery, useGetWorkoutsQuery } = apiSlice;
