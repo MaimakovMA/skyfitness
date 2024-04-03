@@ -11,6 +11,7 @@ export const SelectContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  text-decoration: none;
 `;
 
 export const SelectWrapper = styled.div`
@@ -85,6 +86,7 @@ export const SelectItem = styled.div`
   cursor: pointer;
   position: relative;
   color: ${({ $isFinished }) => ($isFinished ? "#06B16E" : "#000000")};
+  text-decoration: none;
 `;
 
 export const SelectItemCheckboxImg = styled.svg`

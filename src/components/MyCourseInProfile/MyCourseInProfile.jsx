@@ -3,18 +3,12 @@ import * as S from './MyCourseInProfile.styles'
 import { useSelector } from 'react-redux'
 import { useParams, useSearchParams } from 'react-router-dom'
 import { getAllCourses } from 'api'
-//import { useGetWorkoutsQuery } from 'store/slices/apiSlice.js';
-
-//import { Cards } from '../Cards/Cards.jsx';
+import WorkoutSelect from 'components/WorkoutSelect/WorkoutSelect'
 
 function MyCourseInProfile() {
-  const { course } = useSelector(({ user }) => user)
-  const { id } = useParams()
-  const { workoutsList } = useSelector(({ workouts }) => workouts)
-  /*const { data = {} } = useGetWorkoutsQuery({ id });
-  console.log(data)*/
-
   const [allCourses, setAllCourses] = useState()
+  const [modalActive, setModalactive] = useState(false)
+
   useEffect(() => {
     getAllCourses().then((data) => {
       let arr = []
@@ -26,14 +20,14 @@ function MyCourseInProfile() {
   }, [])
 
   const handleClickCourse = (item) => {
-    console.log(`Тренировки по курсу "${item._id}"`)
-    console.log(`В нём будут: ${item.workouts}`)
+    setModalactive(item)
   }
 
   return (
     <S.HeaderStyleMyProfile>
       <S.NameCourseUser>Мои Курсы</S.NameCourseUser>
       <S.TableCourses>
+        {modalActive ? <WorkoutSelect workouts_id={modalActive.workouts} /> : ''}
         {allCourses
           ? allCourses.map((item, id) => {
               const { name, image } = item
