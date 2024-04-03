@@ -118,7 +118,6 @@ export const DirectionsItem = styled.li`
 
 export const DirectionsTitle2 = styled.h2`
     margin:0;
-    padding-top: 75px;
     color: rgb(0, 0, 0);
     font-family: StratosSkyeng;
     font-size: 24px;
@@ -163,11 +162,11 @@ export const ApplicationBtn = styled.button`
     letter-spacing: -0.05px;
     text-align: left;
 `
-export const ApplicationSvg = styled.svg`
-    position: absolute;
+export const ApplicationSvg = styled.svg`    
+    position: relative;
     width: 345.8px;
     height: 337.53px;
-    right: 127px;
-    bottom: -631px;
+    left: 825px;
+    bottom: 390px;
 `
 
