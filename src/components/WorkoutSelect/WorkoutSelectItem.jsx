@@ -1,36 +1,52 @@
-import { useState } from "react";
-import * as S from "./WorkoutSelection.styled";
-import { useSelector } from "react-redux";
+import { useEffect, useState } from 'react'
+import * as S from './WorkoutSelection.styled'
+import { useSelector } from 'react-redux'
+import { getProgress } from 'api'
 
+export const WorkoutSelectItem = ({
+  name,
+  type,
+  task,
+  user_id,
+  workout_id,
+}) => {
+  const [progress, setProgress] = useState()
+  useEffect(() => {
+    let id = user_id
+    getProgress({ id, workout_id }).then((data) => {
+      setProgress(data.exercises)
+    })
+  }, []),
+    []
 
-export const WorkoutSelectItem = ({ name, type, exercise, id }) => {
-
-    const userProg = useSelector(state => state.progress.userProgressAll.userProgressAll.workoutsProgress[id - 1][0]);
-
-    const [progress, setProgress] = useState(userProg);
-    const [exe, setExe] = useState(exercise);
-
-    const allExeChecked = () => {
-        for (const ex of exe) {
-            const matchProgress = progress.find(item => item.training === ex.name);
-            if (!matchProgress || matchProgress.progress < ex.repeats) {
-                return false
-            }
-        }
-        return true
+  const result = () => {
+    let sumProgress = 0
+    if (progress) {
+      for (let item in progress) {
+        sumProgress += Number(progress[item].quantity)
+      }
     }
+    if (task === 0) {
+      return false
+    } else {
+      return task === sumProgress
+    }
+  }
 
-    return (
-        <S.SelectItem $isFinished={allExeChecked()}>
-            {name}
-            {allExeChecked() ? (
-              <S.SelectItemCheckboxImg>
-                <use xlinkHref="/icons/sprite.svg#icon-complete" />
-              </S.SelectItemCheckboxImg>
-            ) : (
-              ""
-            )}
-            <S.SelectItemType>{type}</S.SelectItemType>
-          </S.SelectItem>
-    )
+  return (
+    <S.SelectItem $isFinished={result()}>
+      <S.TitleOfworkoutBlock>
+        {name.split('/')[0]}
+        {result() ? (
+          <S.SelectItemCheckboxImg src="/img/icon-complete.svg" />
+        ) : (
+          ''
+        )}
+      </S.TitleOfworkoutBlock>
+      <S.DescOfworkoutBlock>
+        {name.split('/').splice(1, name.split('/').length).join(' / ')}
+      </S.DescOfworkoutBlock>
+      <S.SelectItemType>{type}</S.SelectItemType>
+    </S.SelectItem>
+  )
 }
