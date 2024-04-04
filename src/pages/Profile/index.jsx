@@ -13,4 +13,5 @@ export default function Profile() {
       </S.StyledSection>
     )
   }
+
   
