@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const SelectContainer = styled.div`
   position: fixed;
@@ -53,8 +53,6 @@ export const SelectList = styled.div`
   padding-left: 10px;
   padding-right: 10px;
   overflow-y: auto;
-  -ms-overflow-style: none; /* IE и Edge */
-  scrollbar-width: none; /* Firefox */
   text-decoration: none;
 
   &::-webkit-scrollbar {

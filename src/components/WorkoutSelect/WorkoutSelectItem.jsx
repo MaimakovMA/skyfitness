@@ -1,7 +1,6 @@
-import { useEffect, useState } from 'react'
-import * as S from './WorkoutSelection.styled'
-import { useSelector } from 'react-redux'
-import { getProgress } from 'api'
+import { useEffect, useState } from 'react';
+import * as S from './WorkoutSelection.styled';
+import { getProgress } from 'api';
 
 export const WorkoutSelectItem = ({
   name,
@@ -14,7 +13,7 @@ export const WorkoutSelectItem = ({
   useEffect(() => {
     let id = user_id
     getProgress({ id, workout_id }).then((data) => {
-      setProgress(data.exercises)
+      setProgress(data.exercises);
     })
   }, []),
     []
@@ -23,13 +22,13 @@ export const WorkoutSelectItem = ({
     let sumProgress = 0
     if (progress) {
       for (let item in progress) {
-        sumProgress += Number(progress[item].quantity)
+        sumProgress += Number(progress[item].quantity);
       }
     }
     if (task === 0) {
-      return false
+      return false;
     } else {
-      return task === sumProgress
+      return task === sumProgress;
     }
   }
 

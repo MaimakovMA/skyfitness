@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const BreadCrumbsList = styled.ul`
   color: rgb(0, 0, 0);

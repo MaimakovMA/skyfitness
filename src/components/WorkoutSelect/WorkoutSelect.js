@@ -1,17 +1,17 @@
-import { Link } from 'react-router-dom'
-import * as S from './WorkoutSelection.styled'
-import { useSelector } from 'react-redux'
-import { useEffect, useState } from 'react'
-import { WorkoutSelectItem } from './WorkoutSelectItem'
-import { getAllWorkouts } from 'api'
-import { getAuth } from 'firebase/auth'
+import { Link } from 'react-router-dom';
+import * as S from './WorkoutSelection.styled';
+import { useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { WorkoutSelectItem } from './WorkoutSelectItem';
+import { getAllWorkouts } from 'api';
+import { getAuth } from 'firebase/auth';
 
 export default function WorkoutSelect({ workouts_id }) {
   // id пользователя
-  const auth = getAuth()
+  const auth = getAuth();
   const user_id = auth.currentUser.uid
 
-  const [workouts, setWorkouts] = useState()
+  const [workouts, setWorkouts] = useState();
 
   useEffect(() => {
     getAllWorkouts().then((data) => {

@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react'
-import Header from '../../components/header/header'
-import WorkoutTitle from '../../components/workoutTitle/workoutTitle'
-import BreadCrumbs from '../../components/breadcrumbs/breadcrumbs'
-import Video from '../../components/video/video'
-import ExercisesAndProgressBlock from '../../components/exercisesAndProgressBlock/exercisesAndProgressBlock'
-import ModalQuestionnaire from '../../components/modalQuestionnaire/modalQuestionnaire'
-import ModalProgressSuccess from '../../components/modalProgressSuccess/modalProgressSuccess'
-import { getAllCourses, getAllWorkouts, getProgress } from 'api'
-import { useParams } from 'react-router'
-import { getAuth } from 'firebase/auth'
+import React, { useEffect, useState } from 'react';
+import Header from '../../components/header/header';
+import WorkoutTitle from '../../components/workoutTitle/workoutTitle';
+import BreadCrumbs from '../../components/breadcrumbs/breadcrumbs';
+import Video from '../../components/video/video';
+import ExercisesAndProgressBlock from '../../components/exercisesAndProgressBlock/exercisesAndProgressBlock';
+import ModalQuestionnaire from '../../components/modalQuestionnaire/modalQuestionnaire';
+import ModalProgressSuccess from '../../components/modalProgressSuccess/modalProgressSuccess';
+import { getAllCourses, getAllWorkouts, getProgress } from 'api';
+import { useParams } from 'react-router';
+import { getAuth } from 'firebase/auth';
 
 export const WorkoutVideoPage = () => {
   // Состояние с активным модальным окном

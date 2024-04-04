@@ -2,7 +2,7 @@ import * as S from './ChooseCourse.Styles.js';
 import { useNavigate, useParams } from "react-router-dom";
 import { useGetCorsesQuery } from 'store/slices/apiSlice.js';
 import { useAuth } from 'hooks/use-auth';
-import { Loader } from 'components/FullPageLoader/FullPageLoader.styles.js';
+import { Loader } from 'components/FullPageLoader/FullPageLoader.jsx';
 
 export const ChooseCourse = () => {
     

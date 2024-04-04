@@ -1,10 +1,4 @@
-import styled from 'styled-components'
-
-// export const PageContainer = styled.div`
-//   max-width: 100%;
-//   height: 100vh;
-//   background-color: rgba(0, 0, 0, 0.85);
-// `
+import styled from 'styled-components';
 
 export const ModalForm = styled.div`
   width: 50%;
