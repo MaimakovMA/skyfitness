@@ -5,15 +5,11 @@ import { useAuth } from 'hooks/use-auth';
 import Header from 'components/header/header';
 
 export default function Profile() {
-   
-  const { email } = useAuth()
+
+  UserLoggedIn()
 
     return (
       <S.StyledSection>
-        {/* <S.LogoBox to="/">
-            <S.LogoChoose src="/img/logo.svg" alt="logo" />
-            </S.LogoBox>
-        <S.User>{email}</S.User> */}
         <Header />
         <MyProfile />
         <MyCourseInProfile />

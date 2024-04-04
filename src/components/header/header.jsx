@@ -1,5 +1,4 @@
 import * as S from './styles';
-import { useAuth } from 'hooks/use-auth'; 
 
 export default function Header() {
 

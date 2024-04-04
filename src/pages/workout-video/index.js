@@ -15,13 +15,13 @@ export const WorkoutVideoPage = () => {
   // 0 - Окна закрыты
   // 1 - Анкета записи прогресса
   // 2 - "Прогресс записан"
-  const [modalActive, setModalActive] = useState(0)
+  const [modalActive, setModalActive] = useState(0);
 
   // id активного урока из URL
-  let workout_id = useParams().id
+  let workout_id = useParams().id;
   // id пользователя
-  const auth = getAuth()
-  const id = auth.currentUser.uid
+  const auth = getAuth();
+  const id = auth.currentUser.uid;
   // const id = 'DrzR1oK1gESplXW6ki4qxUWU7Vm1'
 
   // Состояние с данными для рендера страницы
@@ -64,15 +64,15 @@ export const WorkoutVideoPage = () => {
     getProgress({ id, workout_id }).then((data) => {
       setCurrentProgress(data)
     })
-  }, [])
+  }, []);
 
   useEffect(() => {
     // Если пользователь записал прогресс:
     if (modalActive === 2) {
       // Берем прогресс по id урока и id пользователя из базы данных
-      getProgress({ id, workout_id }).then((data) => setCurrentProgress(data))
+      getProgress({ id, workout_id }).then((data) => setCurrentProgress(data));
     }
-  }, [modalActive])
+  }, [modalActive]);
 
   if (Workout) {
     return (

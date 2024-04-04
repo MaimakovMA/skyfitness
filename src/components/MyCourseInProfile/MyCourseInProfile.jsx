@@ -30,7 +30,7 @@ function MyCourseInProfile() {
       <S.TableCourses>
         {modalActive ? <WorkoutSelect workouts_id={modalActive.workouts} /> : ''}
         {allCourses
-          ? allCourses.map((item, id) => {
+          ? allCourses.map((item) => {
               const { name, image } = item
               return (
                 <S.BlockCard key={name} onClick={() => handleClickCourse(item)}>

@@ -1,14 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getDatabase, ref, set } from "firebase/database";
-
-export async function addCourse(userId) {
-    const db = getDatabase();
-    const response = await db.ref(`/courses/${course._id}/users`).set(userId)
-  
-    const newData = await response.json();
-    
-    return newData
-  }
 
 const initialState = {
     email: null,
@@ -47,28 +37,16 @@ const userSlice = createSlice ({
         },
         setEmail(state, action) {
             state.email = action.payload.email;
-            localStorage.setItem("email", state.email);
+            localStorage.setItem("email", action.payload.email);
           },
-          setPassword(state, action) {
+          setPasswordNew(state, action) {
             state.password = action.payload.password;
-            localStorage.setItem("password", state.password);
+            localStorage.setItem("password", action.payload.password);
           },      
-        addItemToCourse: (state, { payload }) => {
-           let newCourse = [...state.course ];
-           const found = state.course.find(({id}) => id === payload.id)
-           if(found) {
-            newCourse = newCourse.map((item) => {
-              return item.id === payload.id ?  { ...item, quantity: payload.quantity || item.quantity + 0 } : item;
-           }); 
-           } else  newCourse.push({...payload, quantity: 1});
-           state.course = newCourse;
-        },
     },
 });
 
-
-
-export const { setUser, removeUser,setEmail, addItemToCourse, setPassword } = userSlice.actions;
+export const { setUser, removeUser,setEmail, addItemToCourse, setPasswordNew } = userSlice.actions;
 
 export const selectUsers = state => state.user;
 
