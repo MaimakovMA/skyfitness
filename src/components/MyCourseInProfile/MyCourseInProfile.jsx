@@ -1,11 +1,14 @@
-import { useEffect, useState } from 'react';
-import * as S from './MyCourseInProfile.styles';
-import { getAllCourses } from 'api';
-import { UserLoggedIn } from 'hooks/UserLoggedIn';
+import { useEffect, useState } from 'react'
+import * as S from './MyCourseInProfile.styles'
+import { useSelector } from 'react-redux'
+import { useParams, useSearchParams } from 'react-router-dom'
+import { getAllCourses } from 'api'
+import WorkoutSelect from 'components/WorkoutSelect/WorkoutSelect'
 
 function MyCourseInProfile() {
-
   const [allCourses, setAllCourses] = useState()
+  const [modalActive, setModalactive] = useState(false)
+
   useEffect(() => {
     getAllCourses().then((data) => {
       let arr = []
@@ -17,16 +20,15 @@ function MyCourseInProfile() {
   }, [])
 
   const handleClickCourse = (item) => {
-    console.log(`Тренировки по курсу "${item._id}"`)
-    console.log(`В нём будут: ${item.workouts}`)
+    setModalactive(item)
   }
 
-  UserLoggedIn();
 
   return (
-    <S.HeaderStyleMyProfile>
+    <S.HeaderStyleMyProfile onClick={() => modalActive ? setModalactive(false) : ''}>
       <S.NameCourseUser>Мои Курсы</S.NameCourseUser>
       <S.TableCourses>
+        {modalActive ? <WorkoutSelect workouts_id={modalActive.workouts} /> : ''}
         {allCourses
           ? allCourses.map((item) => {
               const { name, image } = item

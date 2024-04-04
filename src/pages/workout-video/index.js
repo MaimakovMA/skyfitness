@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import Header from '../../components/header/header';
-import WorkoutTitle from '../../components/workoutTitle/workoutTitle';
-import BreadCrumbs from '../../components/breadcrumbs/breadcrumbs';
-import Video from '../../components/video/video';
-import ExercisesAndProgressBlock from '../../components/exercisesAndProgressBlock/exercisesAndProgressBlock';
-import ModalQuestionnaire from '../../components/modalQuestionnaire/modalQuestionnaire';
-import ModalProgressSuccess from '../../components/modalProgressSuccess/modalProgressSuccess';
-import { getAllWorkouts, getProgress } from 'api';
-import { useParams } from 'react-router';
-import { getAuth } from 'firebase/auth';
+import React, { useEffect, useState } from 'react'
+import Header from '../../components/header/header'
+import WorkoutTitle from '../../components/workoutTitle/workoutTitle'
+import BreadCrumbs from '../../components/breadcrumbs/breadcrumbs'
+import Video from '../../components/video/video'
+import ExercisesAndProgressBlock from '../../components/exercisesAndProgressBlock/exercisesAndProgressBlock'
+import ModalQuestionnaire from '../../components/modalQuestionnaire/modalQuestionnaire'
+import ModalProgressSuccess from '../../components/modalProgressSuccess/modalProgressSuccess'
+import { getAllCourses, getAllWorkouts, getProgress } from 'api'
+import { useParams } from 'react-router'
+import { getAuth } from 'firebase/auth'
 
 export const WorkoutVideoPage = () => {
   // Состояние с активным модальным окном
@@ -25,7 +25,9 @@ export const WorkoutVideoPage = () => {
   // const id = 'DrzR1oK1gESplXW6ki4qxUWU7Vm1'
 
   // Состояние с данными для рендера страницы
-  const [Workout, setWorkout] = useState();
+  const [Workout, setWorkout] = useState()
+  // Название страницы
+  const [title, setTitle] = useState()
   // Состояние с прогрессом пользователя на этом уроке
   const [currentProgress, setCurrentProgress] = useState({
     exercises: [
@@ -45,15 +47,22 @@ export const WorkoutVideoPage = () => {
   })
 
   useEffect(() => {
+    // Запрашиваем все курсы и ищем там нужное название страницы
+    getAllCourses().then(data => {
+      const arr = [];
+      for (let item in data) {
+        if (data[item].workouts.includes(workout_id)) {
+          setTitle(data[item].name)
+        }
+      }
+    })
     // Берем все уроки и оставляем в Workout одну с нужным id
     getAllWorkouts().then((data) => {
-      setWorkout(data[workout_id]);
-      console.log(data);
+      setWorkout(data[workout_id])
     })
     // Берем прогресс по id урока и id пользователя из базы данных
     getProgress({ id, workout_id }).then((data) => {
-      setCurrentProgress(data);
-      console.log(data);
+      setCurrentProgress(data)
     })
   }, []);
 
@@ -69,7 +78,7 @@ export const WorkoutVideoPage = () => {
     return (
       <main>
         <Header />
-        <WorkoutTitle title={'Йога'} />
+        <WorkoutTitle title={title} />
         <BreadCrumbs text={Workout.name} />
         {modalActive === 1 ? (
           <ModalQuestionnaire
