@@ -8,6 +8,7 @@ export default function CorrectPassword({ setVisiblePas }) {
 
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const newPassword = localStorage.getItem("password");
   const dispatch = useDispatch();
   
   const hendleNewPassword = (event) => {
@@ -20,6 +21,7 @@ export default function CorrectPassword({ setVisiblePas }) {
     updatePassword(auth.currentUser, password).then(() => {
     dispatch(setPasswordNew({ password: password }));
     setVisiblePas(false);
+    alert('Пароль был успешно изменен')
 })
     .catch((error) => {alert ('Неправильный пароль!'); console.log(error)});
 };

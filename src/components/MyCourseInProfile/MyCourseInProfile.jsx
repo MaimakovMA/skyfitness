@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import * as S from './MyCourseInProfile.styles';
 import { getAllCourses } from 'api';
+import { UserLoggedIn } from 'hooks/UserLoggedIn';
 
 function MyCourseInProfile() {
 
@@ -19,6 +20,8 @@ function MyCourseInProfile() {
     console.log(`Тренировки по курсу "${item._id}"`)
     console.log(`В нём будут: ${item.workouts}`)
   }
+
+  UserLoggedIn();
 
   return (
     <S.HeaderStyleMyProfile>
