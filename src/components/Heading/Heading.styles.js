@@ -22,7 +22,7 @@ export const LinkPersonalAccount = styled(Link)`
     width: 132px;
     margin-top: 26px;
     color: rgb(255, 255, 255);
-    font-family: StratosSkyeng;
+    // font-family: StratosSkyeng;
     font-size: 16px;
     font-weight: 400;
     line-height: 24px;
@@ -47,7 +47,7 @@ export const LogoButton = styled(Link)`
     margin-top: 26px;
     margin-right: 90px;
     color: rgb(255, 255, 255);
-    font-family: StratosSkyeng;
+    // font-family: StratosSkyeng;
     font-size: 16px;
     font-weight: 400;
     line-height: 24px;
@@ -66,8 +66,8 @@ export const LogoButton = styled(Link)`
 
 export const Heading = styled.h2`
     color: rgb(255, 255, 255);
-    font-family: StratosSkyeng;
-    font-size: 24px;
+    // font-family: StratosSkyeng;
+    font-size: 20px;
     font-weight: 400;
     line-height: 115%;
     letter-spacing: -0.05px;
