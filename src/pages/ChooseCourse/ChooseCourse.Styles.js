@@ -49,7 +49,7 @@ export const BlockForYou = styled.div`
 `
 export const TitleForYou = styled.h2`
     color: rgb(0, 0, 0);
-    font-family: StratosSkyeng;
+    // font-family: StratosSkyeng;
     font-size: 40px;
     font-weight: 400;
     line-height: 48px;
@@ -76,7 +76,7 @@ export const BlockChoiceTitle = styled.h2`
     margin: 0;
     max-width: 244px;
     color: rgb(0, 0, 0);
-    font-family: StratosSkyeng;
+    // font-family: StratosSkyeng;
     font-size: 24px;
     font-weight: 400;
     line-height: 32px;
@@ -88,7 +88,7 @@ export const Directions = styled.div`
 `
 export const DirectionsTitle = styled.h2`
     color: rgb(0, 0, 0);
-    font-family: StratosSkyeng;
+    // font-family: StratosSkyeng;
     font-size: 40px;
     font-weight: 400;
     line-height: 48px;
@@ -109,7 +109,7 @@ export const DirectionsList = styled.ul`
 `
 export const DirectionsItem = styled.li`
     color: rgb(0, 0, 0);
-    font-family: StratosSkyeng;
+    // font-family: StratosSkyeng;
     font-size: 24px;
     font-weight: 400;
     line-height: 32px;
@@ -119,7 +119,7 @@ export const DirectionsItem = styled.li`
 export const DirectionsTitle2 = styled.h2`
     margin:0;
     color: rgb(0, 0, 0);
-    font-family: StratosSkyeng;
+    // font-family: StratosSkyeng;
     font-size: 24px;
     font-weight: 400;
     line-height: 32px;
@@ -140,7 +140,7 @@ export const ApplicationTitle = styled.h2`
     padding-top: 46px;
     padding-left:52px;
     color: rgb(0, 0, 0);
-    font-family: StratosSkyeng;
+    // font-family: StratosSkyeng;
     font-size: 32px;
     font-weight: 400;
     line-height: 40px;
@@ -157,7 +157,7 @@ export const ApplicationBtn = styled.button`
     border-radius: 46px;
     background: rgb(88, 14, 162);
     color: rgb(255, 255, 255);
-    font-family: StratosSkyeng;
+    // font-family: StratosSkyeng;
     font-size: 18px;
     font-weight: 400;
     line-height: 24px;

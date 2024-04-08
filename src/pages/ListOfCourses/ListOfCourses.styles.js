@@ -22,7 +22,7 @@ export const Button = styled.a`
     border-radius: 46px;
     background: rgb(199, 233, 87);
     color: rgb(0, 0, 0);
-    font-family: StratosSkyeng;
+    // font-family: StratosSkyeng;
     font-size: 24px;
     font-weight: 400;
     line-height: 32px;

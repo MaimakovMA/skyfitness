@@ -16,7 +16,7 @@ export const UserNameBlock = styled.div`
 
 export const UserName = styled.span`
   color: rgb(0, 0, 0);
-  font-family: Montserrat;
+  // font-family: Montserrat;
   font-size: 24px;
   font-weight: 400;
   line-height: 32px;

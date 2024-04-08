@@ -21,6 +21,7 @@ export const MyProfile = () => {
       }
     }
 
+    
     useEffect(() => {
       window.addEventListener('keydown', handleEscape);
       return () => {
