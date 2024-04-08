@@ -6,7 +6,7 @@ import { WorkoutSelectItem } from './WorkoutSelectItem';
 import { getAllWorkouts } from 'api';
 import { getAuth } from 'firebase/auth';
 
-export default function WorkoutSelect({ workouts_id }) {
+export const WorkoutSelect = ({ workouts_id }) => {
   // id пользователя
   const auth = getAuth();
   const user_id = auth.currentUser.uid

@@ -9,13 +9,16 @@ export const LogoBlock = styled.div`
 
 export const Logo = styled.img`
     padding-top: 32px;
-    padding-left: 122px;
     width: 236px;
+`
+export const LogoBlockBtn = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;    
 `
 
 export const LinkPersonalAccount = styled(Link)`
-    position: relative;
-    left: 348px;
+    margin-right: 25px;
     border-radius: 46px;
     background: rgb(20, 13, 64);
     height: 36px;
@@ -45,7 +48,6 @@ export const LogoButton = styled(Link)`
     height: 36px;
     width: 77px;
     margin-top: 26px;
-    margin-right: 90px;
     color: rgb(255, 255, 255);
     // font-family: StratosSkyeng;
     font-size: 16px;
@@ -65,6 +67,8 @@ export const LogoButton = styled(Link)`
 `
 
 export const Heading = styled.h2`
+    margin: 0;
+    margin-bottom: 30px;
     color: rgb(255, 255, 255);
     // font-family: StratosSkyeng;
     font-size: 20px;
@@ -73,30 +77,27 @@ export const Heading = styled.h2`
     letter-spacing: -0.05px;
     text-align: left;
     padding-top: 15px;
-    padding-left: 118px;
 `
 
 export const TitelBlock = styled.div`
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    margin-bottom: 35px;
 `
 
 export const Title = styled.h2`
+    margin: 0;
     color: rgb(244, 244, 255);
     font-size: 67px;
     font-weight: 400;
     line-height: 91.5%;
     letter-spacing: -1.17px;
-    text-align: left;
-    position: relative;
-    bottom: 61px;
-    left: 8px;
+    text-align: left;    
 `
 
 export const Sticker = styled.img`
     position: relative;
-    bottom: 54px;
-    left: 87px;
+    
 `

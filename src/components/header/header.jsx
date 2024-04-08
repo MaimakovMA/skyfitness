@@ -1,6 +1,6 @@
 import * as S from './styles';
 
-export default function Header() {
+export const Header = () => {
 
   const userName = localStorage.getItem('email');
   

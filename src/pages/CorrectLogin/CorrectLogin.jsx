@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { getAuth, updateEmail, reauthenticateWithCredential, EmailAuthProvider } from "firebase/auth";
 import { setEmail } from 'store/slices/userSlice.js';
 
-export default function CorrectLogin ({ setVisibleLogin }) {
+export const CorrectLogin = ({ setVisibleLogin }) => {
   const [emailNew, setEmailNew] = useState('');
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();

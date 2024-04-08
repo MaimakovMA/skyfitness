@@ -127,6 +127,8 @@ export const DirectionsTitle2 = styled.h2`
 `
 
 export const Application = styled.div`
+    display: flex;
+    justify-content: space-between;
     margin-bottom: 75px;
     border-radius: 30px;
     background: rgb(249, 235, 255);
@@ -161,12 +163,15 @@ export const ApplicationBtn = styled.button`
     line-height: 24px;
     letter-spacing: -0.05px;
     text-align: left;
+    cursor: pointer;
 `
 export const ApplicationSvg = styled.svg`    
-    position: relative;
     width: 345.8px;
     height: 337.53px;
-    left: 825px;
-    bottom: 390px;
+    
 `
 
+export const ApplicationDiv = styled.div`
+`
+export const ApplicationDiv2 = styled.div`
+`

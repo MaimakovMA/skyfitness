@@ -1,7 +1,7 @@
 import * as S from './styles';
-import ProgressBar from '../../components/progressBar/progressBar';
+import { ProgressBar } from '../../components/progressBar/progressBar';
 
-export default function ListOfProgress({ exercises, currentProgress }) {
+export const ListOfProgress = ({ exercises, currentProgress }) => {
   // Функция принимает нужное количество выполнений и фактическое, возвращает процент выполнения
   let result = (quantity, userProgress) => {
     if ((userProgress / quantity) * 100 > 100) {

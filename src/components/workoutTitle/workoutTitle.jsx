@@ -1,5 +1,5 @@
 import * as S from './styles';
 
-export default function WorkoutTitle({title}) {
+export const WorkoutTitle = ({title}) => {
     return <S.Title>{title}</S.Title>
 }

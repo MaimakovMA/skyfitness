@@ -106,6 +106,7 @@ export const ChooseCourse = () => {
 
             </S.Directions>
             <S.Application> 
+                <S.ApplicationDiv>
                 <S.ApplicationTitle>
                     Оставьте заявку на пробное занятие, мы свяжемся 
                     с вами, поможем с выбором направления и тренера, с которым тренировки принесут здоровье и радость!
@@ -121,8 +122,8 @@ export const ChooseCourse = () => {
                     </S.ApplicationBtn>
                     )} 
                 </S.ApplicationBtnDiv>
-                              
-            </S.Application>
+                </S.ApplicationDiv>    
+                <S.ApplicationDiv2>
             <S.ApplicationSvg>
                 <svg width="345.795410" height="337.525665" viewBox="0 0 345.795 337.526" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
 	<desc>
@@ -174,6 +175,9 @@ export const ChooseCourse = () => {
 	<path id="Vector 4371" d="M88.2422 290.765C103.385 296.71 124.754 300.673 146.18 268.941C165.945 239.667 173.151 228.568 185.014 194.399M200.835 142.925C205.548 124.041 207.32 109.276 205.937 96.0525C203.662 74.3042 197.838 63.2387 185.142 54.7764M121.888 225.513C123.046 226.135 124.418 225.981 125.96 225.15C126.814 224.69 127.72 224.021 128.67 223.162M164.19 141.043C164.126 139.682 164 138.327 163.806 136.973C163.188 132.645 161.89 128.319 159.818 123.825" stroke="#271A58" strokeOpacity="1.000000" strokeWidth="1.000000"/>
 </svg>
                 </S.ApplicationSvg>
+            </S.ApplicationDiv2>                          
+            </S.Application>            
+            
         </S.Conteiner>
 
               
