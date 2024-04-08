@@ -18,6 +18,7 @@ export default function CorrectPassword({ setVisiblePas }) {
       alert('Введите пароль');
       return
     }
+    
     updatePassword(auth.currentUser, password).then(() => {
     dispatch(setPasswordNew({ password: password }));
     setVisiblePas(false);
