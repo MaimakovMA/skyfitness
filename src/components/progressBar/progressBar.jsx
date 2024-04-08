@@ -33,9 +33,10 @@ const palette = [
   },
 ]
 
-
-
 export const ProgressBar = ({ percentage, keyColor}) => {
+
+
+  
   const paletteItem = palette.find(elem => elem.id === keyColor)
   
   return (
