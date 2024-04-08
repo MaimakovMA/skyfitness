@@ -1,7 +1,7 @@
 import * as S from './Heading.styles.js';
-import {useDispatch} from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useAuth } from 'hooks/use-auth';
-import {removeUser} from 'store/slices/userSlice';
+import { removeUser } from 'store/slices/userSlice';
 import { getAuth, signOut } from "firebase/auth";
 import { useNavigate } from 'react-router-dom';
 import { UserLoggedIn } from 'hooks/UserLoggedIn.jsx';
@@ -29,14 +29,17 @@ UserLoggedIn();
         <>
           <S.LogoBlock>
             <S.Logo src="/img/logoWhite.svg" alt="logoWhite" />
+            <S.LogoBlockBtn>
             {isAuth ? (
             <>
+            
             <S.LinkPersonalAccount to={`/profile`}>Мой профиль</S.LinkPersonalAccount >
             <S.LogoButton onClick={hendleSignOut}>Выйти</S.LogoButton>
             </>
             ) : (
             <S.LogoButton to={`/login`}>Войти</S.LogoButton>
             )}
+            </S.LogoBlockBtn>
           </S.LogoBlock>
           <S.Heading>Онлайн-тренировки для занятий дома</S.Heading> 
           <S.TitelBlock>

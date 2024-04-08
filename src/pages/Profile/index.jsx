@@ -1,9 +1,9 @@
 import * as S from './profile.styled';
-import MyProfile from '../../components/MyProfile/MyProfile';
-import MyCourseInProfile from '../../components/MyCourseInProfile/MyCourseInProfile';
-import Header from 'components/header/header';
+import { MyProfile } from '../../components/MyProfile/MyProfile';
+import { MyCourseInProfile } from '../../components/MyCourseInProfile/MyCourseInProfile';
+import { Header } from 'components/header/header';
 
-export default function Profile() {
+export const Profile = () => {
 
     return (
       <S.StyledSection>
@@ -13,3 +13,4 @@ export default function Profile() {
       </S.StyledSection>
     )
   }
+

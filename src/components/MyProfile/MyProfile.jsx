@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import CorrectLogin from '../../pages/CorrectLogin/CorrectLogin';
-import CorrectPassword from '../../pages/CorrectPassword/Correct';
+import { CorrectLogin } from '../../pages/CorrectLogin/CorrectLogin';
+import { CorrectPassword }  from '../../pages/CorrectPassword/Correct';
 import * as S from './MyProfile.styles';
 
-function MyProfile() {
+export const MyProfile = () => {
   
     const userName = localStorage.getItem('email');
     const [visibleLogin, setVisibleLogin] = useState(false);
@@ -64,4 +64,3 @@ return (
   )
 }
 
-export default MyProfile

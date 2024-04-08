@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { getAuth, updatePassword } from "firebase/auth";
 import { setPasswordNew } from 'store/slices/userSlice.js';
 
-export default function CorrectPassword({ setVisiblePas }) {
+export const CorrectPassword = ({ setVisiblePas }) => {
 
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');

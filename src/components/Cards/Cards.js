@@ -4,14 +4,12 @@ import { NavLink } from 'react-router-dom';
 export const MainBlockCards = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 48px;
-  padding-left: 121px;
-  position: relative;
-  bottom: 59px;
+  gap: 43px;
+  margin-bottom: 35px;
 `
 
 export const BlockCard = styled(NavLink)`
-  width: 379px;
+  width: 360px;
 `
 
 export const Card = styled.div`
@@ -23,7 +21,6 @@ export const Card = styled.div`
   height: 480px;
   width: 360px;
   border-radius: 30px;
-  margin-top: 20px;
   display: inline-block;
   background-position: 50% 50%;
   background-size: auto;

@@ -1,7 +1,9 @@
 import { styled } from 'styled-components';
 
 export const Conteiner = styled.div`
-background-color: rgb(39, 26, 88);
+    background-color: rgb(39, 26, 88);
+    padding-right: 76px;
+    padding-left: 140px;
 `
 
 export const Footer = styled.div`
@@ -9,9 +11,7 @@ export const Footer = styled.div`
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
-    position: relative;
-    bottom: 22px;
-    left: 18px;
+    padding-bottom: 35px;
 `
 
 export const Anchor = styled.a``
