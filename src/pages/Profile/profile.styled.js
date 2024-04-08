@@ -1,22 +1,11 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-export const StyledSection = styled.section`
-  // color: #000000;
-  // max-width: 1440px;
-  // margin: 0 auto;
+export const StyledSection = styled.section` 
   background-color: #FAFAFA;
-  // display: flex;
-  // flex-direction: column;
-  // align-content: center;
-  // flex-wrap: wrap;
-  
-    padding-left: calc(50% - 580px);
-  padding-right: calc(50% - 580px);
-  // background: #271a58;
+  padding-left: 140px;
+  padding-right: 140px;
   min-height: 100vh;
-
-
 `
 export const Logo = styled.img`
     padding-top: 32px;

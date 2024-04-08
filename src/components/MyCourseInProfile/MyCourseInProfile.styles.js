@@ -8,10 +8,10 @@ export const HeaderStyleMyProfile = styled.div`
 `
 
 export const TableCourses = styled.div`
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
-  row-gap: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  padding-bottom: 35px;
 `
 export const NameCourseUser = styled.p`
   color: #000;
@@ -23,7 +23,7 @@ export const NameCourseUser = styled.p`
 `
 
 export const BlockCard = styled(NavLink)`
-  width: 379px;
+  width: 360px;
 `
 
 export const Card = styled.div`

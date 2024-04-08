@@ -4,7 +4,7 @@ import { SignUp } from './pages/signUp/SignUp.jsx';
 import { ListOfCourses } from './pages/ListOfCourses/ListOfCourses.jsx';
 import { NotFoundPage } from './pages/NotFound/NotFound.jsx';
 import { ChooseCourse } from 'pages/ChooseCourse/chooseCourse.jsx';
-import Profile from "pages/Profile/index.jsx";
+import { Profile } from "pages/Profile/index.jsx";
 import { WorkoutVideoPage } from "pages/workout-video/index.js";
 import { ProtectedRoute } from 'ProtectedRoute.jsx';
 

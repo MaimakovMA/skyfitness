@@ -1,6 +1,6 @@
 import * as S from './styles';
 
-export default function ListOfExercises({ exercises }) {
+export const ListOfExercises = ({ exercises }) => {
   return (
     <S.List>
       {exercises.map((item) => (

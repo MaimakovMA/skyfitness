@@ -5,7 +5,8 @@ export const HeaderBlock = styled(Link)`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 24px 0 66px 0;
+  margin-bottom: 66px;
+  padding-top: 24px;
 `
 export const UserNameBlock = styled.div`
   display: flex;

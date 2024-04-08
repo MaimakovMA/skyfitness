@@ -4,11 +4,11 @@ import { useParams } from 'react-router-dom';
 import { getAuth } from 'firebase/auth';
 import { saveProgress } from 'api.jsx';
 
-export default function ModalQuestionnaire({
+export const ModalQuestionnaire = ({
   modalActive,
   setModalActive,
   workout,
-}) {
+}) => {
   // Берем id урока из URL
   const params = useParams()
   const workout_id = params.id

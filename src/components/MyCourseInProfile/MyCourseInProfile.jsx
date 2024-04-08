@@ -1,11 +1,9 @@
 import { useEffect, useState } from 'react'
 import * as S from './MyCourseInProfile.styles'
-import { useSelector } from 'react-redux'
-import { useParams, useSearchParams } from 'react-router-dom'
 import { getAllCourses } from 'api'
-import WorkoutSelect from 'components/WorkoutSelect/WorkoutSelect'
+import { WorkoutSelect } from 'components/WorkoutSelect/WorkoutSelect'
 
-function MyCourseInProfile() {
+export const MyCourseInProfile = () => {
   const [allCourses, setAllCourses] = useState()
   const [modalActive, setModalactive] = useState(false)
 
@@ -46,4 +44,4 @@ function MyCourseInProfile() {
   )
 }
 
-export default MyCourseInProfile
+

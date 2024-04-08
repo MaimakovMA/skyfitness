@@ -37,7 +37,6 @@ export const HeaderStyleMyProfile = styled.div`
 export const ProfileButton = styled.button`
   width: 275px;
   height: 52px;
-
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
@@ -47,6 +46,7 @@ export const ProfileButton = styled.button`
   border-radius: 46px;
   background-color: #580ea2;
   color: #fff;
+  cursor: pointer;
 
   &:not(:last-child) {
     margin-right: 10px;

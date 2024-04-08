@@ -1,4 +1,4 @@
-export default function Video({url}) {
+export  function Video({url}) {
   const opts = {
     height: '639px',
     width: '100%',
